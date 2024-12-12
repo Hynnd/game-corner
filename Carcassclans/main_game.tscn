@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://duldjr1d4xcbm"]
+
+[ext_resource type="PackedScene" uid="uid://bwsfgq83g1dri" path="res://assets/tiles/tile_cannon.tscn" id="1_hwan0"]
+[ext_resource type="PackedScene" uid="uid://lr28tanto065" path="res://assets/tiles/tile_home.tscn" id="2_02e4x"]
+[ext_resource type="PackedScene" uid="uid://b8ucwpr18gsro" path="res://assets/enemies/sword_enemy/sword_enemy.tscn" id="3_7yjwd"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="3_jkwdm"]
+[ext_resource type="Script" path="res://src/label_money.gd" id="4_ite1c"]
+[ext_resource type="Script" path="res://src/label_wave.gd" id="5_roy0p"]
+
+[node name="Main" type="Node"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 52
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 272.0
+grow_horizontal = 0
+
+[node name="Wave" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "grssd"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("5_roy0p")
+
+[node name="Money" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "tdawg"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("4_ite1c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_jkwdm")
+move_speed = 1000.0
+
+[node name="Tile" parent="." instance=ExtResource("1_hwan0")]
+position = Vector2(40, 0)
+
+[node name="Tile2" parent="." instance=ExtResource("2_02e4x")]
+
+[node name="SwordEnemy" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(414, 59)
+
+[node name="SwordEnemy2" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(288, 216)
+
+[node name="SwordEnemy3" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(-80, 280)
+
+[node name="SwordEnemy4" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(-320, 280)
+
+[node name="SwordEnemy5" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(-456, 136)
+
+[node name="SwordEnemy6" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(-496, -128)
+
+[node name="SwordEnemy7" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(-248, -280)
+
+[node name="SwordEnemy8" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(144, -296)
+
+[node name="SwordEnemy9" parent="." instance=ExtResource("3_7yjwd")]
+position = Vector2(448, -176)

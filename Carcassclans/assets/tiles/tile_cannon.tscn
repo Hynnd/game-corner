@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwsfgq83g1dri"]
+
+[ext_resource type="Script" path="res://assets/tiles/tile_cannon.gd" id="1_6xrpd"]
+[ext_resource type="Script" path="res://src/health/health.gd" id="1_w8ky0"]
+[ext_resource type="Script" path="res://assets/tiles/range_area.gd" id="3_pdg4k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4xy3"]
+radius = 650.13
+
+[node name="Tile" type="Area2D" groups=["tile"]]
+script = ExtResource("1_6xrpd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_w8ky0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Head" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="Head"]
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 28.0
+offset_bottom = 6.0
+color = Color(0.285156, 0.396851, 1, 1)
+
+[node name="RangeArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_pdg4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource("CircleShape2D_i4xy3")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true

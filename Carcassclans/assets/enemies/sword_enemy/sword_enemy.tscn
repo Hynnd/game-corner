@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ucwpr18gsro"]
+
+[ext_resource type="Script" path="res://src/health/health.gd" id="1_2i1lt"]
+[ext_resource type="Script" path="res://assets/enemies/sword_enemy/sword_enemy.gd" id="1_hhtnb"]
+[ext_resource type="Script" path="res://assets/enemies/sword_enemy/attack_area.gd" id="2_avaiv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfvhk"]
+radius = 10.0499
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8147"]
+radius = 12.1655
+
+[node name="SwordEnemy" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 2
+gravity_scale = 0.0
+script = ExtResource("1_hhtnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yfvhk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.199219, 0.199219, 1)
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_2i1lt")
+
+[node name="AttackArea" type="Area2D" parent="."]
+script = ExtResource("2_avaiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_o8147")
