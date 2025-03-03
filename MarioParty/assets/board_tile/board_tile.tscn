@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://x71e3rs52ykn"]
+
+[ext_resource type="Script" uid="uid://b7e2us1cdw1ig" path="res://assets/board_tile/board_tile.gd" id="1_vul3s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vul3s"]
+albedo_color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="BoardTile" type="Node3D" groups=["board_tile"]]
+script = ExtResource("1_vul3s")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.85
+height = 0.25
+sides = 16
+material = SubResource("StandardMaterial3D_vul3s")

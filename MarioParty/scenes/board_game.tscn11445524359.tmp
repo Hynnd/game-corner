@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://t05iqk20633f"]
+
+[ext_resource type="PackedScene" uid="uid://c8bp2gr3um1kk" path="res://assets/player/player.tscn" id="1_qberk"]
+[ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="2_ayvlx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ayvlx"]
+sky_top_color = Color(0.79, 0.79, 0.79, 1)
+sky_horizon_color = Color(0.125786, 0.129976, 0.13659, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.147074, 0.151741, 0.159108, 1)
+
+[sub_resource type="Sky" id="Sky_mac0m"]
+sky_material = SubResource("ProceduralSkyMaterial_ayvlx")
+
+[sub_resource type="Environment" id="Environment_8orke"]
+background_mode = 2
+sky = SubResource("Sky_mac0m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_qberk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.760355, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g22v7"]
+gradient = SubResource("Gradient_qberk")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayvlx"]
+albedo_texture = SubResource("GradientTexture2D_g22v7")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5
+
+[node name="BoardGame" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8orke")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_ayvlx")
+
+[node name="Player" parent="." instance=ExtResource("1_qberk")]
+
+[node name="BoardTile" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+next_tiles = [NodePath("../BoardTile2")]
+
+[node name="BoardTile2" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+next_tiles = [NodePath("../BoardTile3")]
+
+[node name="BoardTile3" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
+next_tiles = [NodePath("../BoardTile4")]
+
+[node name="BoardTile4" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
+next_tiles = [NodePath("../BoardTile5")]
+
+[node name="BoardTile5" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+next_tiles = [NodePath("../BoardTile")]
