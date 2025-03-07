@@ -7,7 +7,7 @@ var mouse_sensitivity:float = 65
 
 
 func _ready() -> void:
-	current = owner.camera_mode == owner.CameraMode.FIRST
+	current = owner.camera_mode == owner.CameraMode.FIRST and owner.is_owner()
 	if current:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		await owner.ready

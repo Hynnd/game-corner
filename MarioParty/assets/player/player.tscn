@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8bp2gr3um1kk"]
+[gd_scene load_steps=11 format=3 uid="uid://c8bp2gr3um1kk"]
 
 [ext_resource type="Script" uid="uid://ctmhdhn5megwr" path="res://assets/player/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://w3f6s8ctp428" path="res://assets/player/movement/movement_normal.gd" id="2_d5dr7"]
@@ -17,6 +17,17 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_toylo"]
 size = Vector3(0.2, 1.715, 0.2)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_toylo"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("MovementNormal:move_input")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("MovementNormal:synced_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -50,9 +61,11 @@ unique_name_in_owner = true
 [node name="BodyManager" parent="Visuals" instance=ExtResource("3_ouxva")]
 unique_name_in_owner = true
 
-[node name="ThirdPersonCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.902217, 0.431283, 0, -0.431283, 0.902217, 9.53674e-07, 3.42921, 5.40248)
+[node name="ThirdPersonCamera" type="Node3D" parent="."]
 script = ExtResource("6_toylo")
+
+[node name="Camera" type="Camera3D" parent="ThirdPersonCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.902217, 0.431283, 0, -0.431283, 0.902217, 9.53674e-07, 3.42921, 5.40248)
 
 [node name="FirstPersonCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -64,3 +77,6 @@ transform = Transform3D(1.12483, 0, 0, 0, 1.12483, 0, 0, 0, 1.12483, 0, 2.14868,
 pixel_size = 0.01
 billboard = 1
 text = "321321"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_toylo")

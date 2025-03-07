@@ -1,31 +1,51 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://be4hentnuh5p1"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://be4hentnuh5p1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpelh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlkpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlkpy"]
-bg_color = Color(1, 0.974287, 0.514618, 1)
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.98, 0.4, 1)
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpelh"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_het5a"]
+bg_color = Color(1, 0.98, 0.4, 0.290196)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.980392, 0.4, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
 [resource]
-Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_focus_color = Color(0, 0, 0, 1)
 Button/colors/icon_hover_color = Color(0, 0, 0, 1)
 Button/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
@@ -36,4 +56,4 @@ Button/styles/disabled = SubResource("StyleBoxEmpty_mpelh")
 Button/styles/focus = SubResource("StyleBoxEmpty_mlkpy")
 Button/styles/hover = SubResource("StyleBoxFlat_mlkpy")
 Button/styles/normal = SubResource("StyleBoxFlat_mpelh")
-Button/styles/pressed = SubResource("StyleBoxFlat_mpelh")
+Button/styles/pressed = SubResource("StyleBoxFlat_het5a")

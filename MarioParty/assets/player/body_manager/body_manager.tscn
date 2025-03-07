@@ -223,14 +223,14 @@ lower_fade = 2.3338e-05
 
 [node name="Arms" type="Node3D" parent="Chest"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0060696, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140169, 0)
 
 [node name="Hand1" type="Node3D" parent="Chest/Arms"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58, 0, 0)
 
 [node name="Cube_003" type="MeshInstance3D" parent="Chest/Arms/Hand1"]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0.01234, 0.00934625, 0)
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0.01234, 0.00934625, 0)
 material_override = ExtResource("3_h0qb2")
 mesh = SubResource("ArrayMesh_canp7")
 skeleton = NodePath("")
@@ -240,7 +240,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58, 0, 0)
 
 [node name="Cube_003" type="MeshInstance3D" parent="Chest/Arms/Hand2"]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0.01234, 0.00934625, 0)
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0.01234, 0.00934625, 0)
 material_override = ExtResource("3_h0qb2")
 mesh = SubResource("ArrayMesh_canp7")
 skeleton = NodePath("")
@@ -257,7 +257,7 @@ script = ExtResource("3_i43vc")
 other_leg = NodePath("../../Leg2/Foot2")
 
 [node name="Cube_002" type="MeshInstance3D" parent="Legs/Leg1/Foot1"]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.226948, -0.009352, 0.069558, 0)
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.199, -0.009352, 0.069558, 0)
 material_override = ExtResource("3_h0qb2")
 mesh = SubResource("ArrayMesh_plij3")
 skeleton = NodePath("")
@@ -271,7 +271,7 @@ script = ExtResource("3_i43vc")
 other_leg = NodePath("../../Leg1/Foot1")
 
 [node name="Cube_002" type="MeshInstance3D" parent="Legs/Leg2/Foot2"]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.226948, -0.000873119, 0.069558, 0)
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.199, -0.000873119, 0.069558, 0)
 material_override = ExtResource("3_h0qb2")
 mesh = SubResource("ArrayMesh_plij3")
 skeleton = NodePath("")

@@ -1,0 +1,5 @@
+- main menu
+- characher select
+- draw face
+- add body pushing
+- fix jittering

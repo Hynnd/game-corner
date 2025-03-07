@@ -11,19 +11,22 @@ config_version=5
 [application]
 
 config/name="MarioParty"
-run/main_scene="uid://t05iqk20633f"
+run/main_scene="uid://delsxx63xdome"
 config/features=PackedStringArray("4.4")
-config/icon="res://icons/icon.svg"
+config/icon="uid://di7ux0yqb4qiy"
 
 [autoload]
 
 GameState="*res://autoloads/game_state.gd"
+ScreenSplitter="*res://autoloads/screen_splitter.gd"
+Multiplayer="*res://autoloads/multiplayer.gd"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/mode=3
+window/size/window_width_override=845
+window/size/window_height_override=475
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 

@@ -11,6 +11,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var cur_id = GameState.current_player
-	var target = GameState.players[cur_id].position
+	var id = GameState.current_id
+	var target = GameState.players[id].node.position
 	position = position.lerp(target, 3 * delta)

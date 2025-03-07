@@ -3,6 +3,7 @@ extends Node3D
 const BOARD_TILE_LINE = preload("board_tile_line.tscn")
 
 @export var is_start:bool = false
+@export var consume_move:bool = true
 @export var next_tiles:Array[Node3D]
 
 
@@ -25,12 +26,21 @@ func _create_lines() -> void:
 
 
 func get_pos() -> Vector2:
-	var offsets = [Vector2(0,-1),Vector2(0,1),Vector2(1,0),Vector2(-1,0)]
+	var offsets = [Vector2(0,-1),Vector2(0,1),Vector2(1,0),Vector2(-1,0),Vector2(-5,0)]
 	var players_on_tile = 0
-	#for tile_name in GameState.player_tiles.values():
 	for id in GameState.player_tiles.keys():
 		var tile_name = GameState.player_tiles[id]
-		if tile_name == name and global_position.distance_to(GameState.players[id].global_position) < 2:
+		if tile_name == name and global_position.distance_to(GameState.players[id].node.global_position) < 2:
 			players_on_tile += 1
 	
 	return Swizzler.xz(global_position) + offsets[players_on_tile]
+
+
+func on_player_passed(player:int):
+	#print("Player: ", player, " Passed at tile: ", name)
+	pass
+
+
+func on_player_stopped(player:int):
+	#print("Player: ", player, " Stopped at tile: ", name)
+	pass

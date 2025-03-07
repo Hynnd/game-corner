@@ -57,8 +57,8 @@ func _process(delta: float) -> void:
 	hand_1.position.y = (_arms_raise-1) * 0.3 + _arms_fall * 1.2
 	hand_2.position.y = (_arms_raise-1) * 0.3 + _arms_fall * 1.2
 	# Out/In
-	hand_1.position.x = -0.27 - _arms_raise * 0.17 - _arms_fall * 0.3
-	hand_2.position.x = 0.27 + _arms_raise * 0.17 + _arms_fall * 0.3
+	hand_1.position.x = -0.38 - _arms_raise * 0.19 - _arms_fall * 0.3
+	hand_2.position.x = 0.38 + _arms_raise * 0.19 + _arms_fall * 0.3
 	
 	legs.position = legs.position.lerp(Swizzler.xoz(vel).limit_length(1) * 0.4, min(delta * 7, 1))
 	arms.position = arms.position.lerp(Swizzler.xoz(vel).limit_length(1) * 0.15 + Vector3(0,_arms_height,0), min(delta * 7, 1))
