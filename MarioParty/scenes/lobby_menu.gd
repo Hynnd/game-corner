@@ -24,6 +24,9 @@ func _ready() -> void:
 		await get_tree().create_timer(0.1).timeout
 		$HBoxContainer.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
+	Multiplayer.server_created.connect(func():
+		$HBoxContainer.get_child(multiplayer.get_peers().size()).on_pressed()
+		)
 
 
 func _process(delta: float) -> void:

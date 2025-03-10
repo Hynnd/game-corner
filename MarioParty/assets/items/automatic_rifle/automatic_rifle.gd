@@ -29,6 +29,8 @@ func shoot() -> void:
 
 
 func update_transforms() -> void:
+	if not is_instance_valid(get_viewport()): return
+	
 	var cam = get_viewport().get_camera_3d()
 	global_rotation = cam.global_rotation
 	global_position = cam.global_position

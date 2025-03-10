@@ -1,5 +1,7 @@
 extends Node
 
+signal server_created
+
 var peer = ENetMultiplayerPeer.new()
 
 
@@ -14,6 +16,8 @@ func create_server():
 		var state = GameState.get_state()
 		GameState.set_state.rpc_id(id, state)
 		)
+	
+	server_created.emit()
 
 
 func join_server():

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dmlw8tod4g8c8" path="res://assets/player/body_manager/body_manager.gd" id="1_u2pqc"]
 [ext_resource type="Script" uid="uid://chmscgicdmmmp" path="res://assets/player/body_manager/chest.gd" id="2_h0qb2"]
-[ext_resource type="Material" uid="uid://c8he64qjga6bk" path="res://assets/player/body_manager/balloon.tres" id="3_h0qb2"]
 [ext_resource type="Script" uid="uid://bml74jl5pkxmq" path="res://assets/player/body_manager/foot.gd" id="3_i43vc"]
 [ext_resource type="Texture2D" uid="uid://c6mvkedk5qvja" path="res://assets/player/body_manager/faces/smile_1.png" id="4_i43vc"]
-[ext_resource type="Material" uid="uid://d16e0f17so40c" path="res://assets/player/body_manager/balloon_2.tres" id="5_sv3f5"]
+[ext_resource type="Material" uid="uid://cib3xqktcgu7n" path="res://assets/player/body_manager/mats/balloon_mat.tres" id="5_2pejf"]
+[ext_resource type="Material" uid="uid://bg5y6ue5p2sfy" path="res://assets/player/body_manager/mats/body_mat.tres" id="7_nr3sf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oh4y"]
 resource_name = "Material"
@@ -206,13 +206,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167958, 0)
 
 [node name="Head" type="MeshInstance3D" parent="Chest/Head"]
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.000245273, 0)
-material_override = ExtResource("3_h0qb2")
+material_override = ExtResource("5_2pejf")
 mesh = SubResource("ArrayMesh_hvlsn")
 skeleton = NodePath("")
 
 [node name="Thing" type="MeshInstance3D" parent="Chest/Head/Head"]
 transform = Transform3D(0.949047, -0.3141, -0.025508, 0.294546, 0.912909, -0.282558, 0.112038, 0.260647, 0.958911, -0.00567668, 0, 0)
-material_override = ExtResource("3_h0qb2")
+material_override = ExtResource("5_2pejf")
 mesh = SubResource("ArrayMesh_2pejf")
 skeleton = NodePath("")
 
@@ -233,7 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58, 0, 0)
 
 [node name="Hand1" type="MeshInstance3D" parent="Chest/Arms/Hand1"]
 transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0.01234, 0.00934625, 0)
-material_override = ExtResource("5_sv3f5")
+material_override = ExtResource("7_nr3sf")
 mesh = SubResource("ArrayMesh_canp7")
 skeleton = NodePath("")
 
@@ -243,7 +243,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58, 0, 0)
 
 [node name="Hand2" type="MeshInstance3D" parent="Chest/Arms/Hand2"]
 transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0.01234, 0.00934625, 0)
-material_override = ExtResource("5_sv3f5")
+material_override = ExtResource("7_nr3sf")
 mesh = SubResource("ArrayMesh_canp7")
 skeleton = NodePath("")
 
@@ -260,7 +260,7 @@ other_leg = NodePath("../../Leg2/Foot2")
 
 [node name="Foot1" type="MeshInstance3D" parent="Legs/Leg1/Foot1"]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.199, -0.009352, 0.069558, 0)
-material_override = ExtResource("5_sv3f5")
+material_override = ExtResource("7_nr3sf")
 mesh = SubResource("ArrayMesh_plij3")
 skeleton = NodePath("")
 
@@ -274,7 +274,7 @@ other_leg = NodePath("../../Leg1/Foot1")
 
 [node name="Foot2" type="MeshInstance3D" parent="Legs/Leg2/Foot2"]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.199, -0.000873119, 0.069558, 0)
-material_override = ExtResource("5_sv3f5")
+material_override = ExtResource("7_nr3sf")
 mesh = SubResource("ArrayMesh_plij3")
 skeleton = NodePath("")
 
@@ -284,6 +284,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Stomach" type="MeshInstance3D" parent="Stomach"]
 transform = Transform3D(0.249919, 0, 0, 0, 0.190971, 0, 0, 0, 0.209285, 0, -0.0175363, 0)
-material_override = ExtResource("5_sv3f5")
+material_override = ExtResource("7_nr3sf")
 mesh = SubResource("ArrayMesh_3f487")
 skeleton = NodePath("")

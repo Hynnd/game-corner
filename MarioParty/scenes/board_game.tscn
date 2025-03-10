@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://t05iqk20633f"]
+[gd_scene load_steps=14 format=3 uid="uid://t05iqk20633f"]
 
 [ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_game.gd" id="1_v8odh"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_env.tres" id="2_02cv7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="6_ihyv1"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_j33e7"]
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="8_j33e7"]
+[ext_resource type="Material" uid="uid://cib3xqktcgu7n" path="res://assets/player/body_manager/mats/balloon_mat.tres" id="9_6ltim"]
 
 [sub_resource type="Gradient" id="Gradient_8orke"]
 interpolation_mode = 1
@@ -107,3 +108,13 @@ offset_right = 933.0
 offset_bottom = 474.0
 theme = ExtResource("8_j33e7")
 text = "Start Minigame*"
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.500091, 0, 0, 0, 0.500091, 0, 0, 0, 0.500091, -13.1372, 6.69215, -0.0144968)
+radius = 6.73278
+material = ExtResource("9_6ltim")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0528, 9.02163, 2.29329)
+light_energy = 30.16
+omni_range = 17.085

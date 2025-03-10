@@ -13,6 +13,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_counter -= delta
+	if _counter > 0:
+		_counter -= delta
+		if _counter <= 0:
+			if multiplayer.is_server():
+				get_tree().current_scene.exit()
 	
-	label.text = Time.get_time_string_from_unix_time(_counter)
+	label.text = Time.get_time_string_from_unix_time(_counter).erase(0, 3)

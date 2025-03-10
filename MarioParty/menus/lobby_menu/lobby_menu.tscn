@@ -70,19 +70,19 @@ alignment = 1
 
 [node name="CharacterColorButton" parent="HBoxContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
-color = Color(0.168627, 0.403922, 1, 1)
+color = Color(0.235294, 0.490196, 1, 1)
 
 [node name="CharacterColorButton2" parent="HBoxContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
-color = Color(1, 0.271393, 0.241543, 1)
+color = Color(1, 0.304, 0.28, 1)
 
 [node name="CharacterColorButton3" parent="HBoxContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
-color = Color(0.24, 1, 0.417333, 1)
+color = Color(0.231373, 1, 0.254902, 1)
 
 [node name="CharacterColorButton4" parent="HBoxContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
-color = Color(1, 1, 0.24, 1)
+color = Color(1, 0.909804, 0.239216, 1)
 
 [node name="CharacterColorButton5" parent="HBoxContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2

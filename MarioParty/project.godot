@@ -41,6 +41,7 @@ folder_colors={
 "res://autoloads/": "red",
 "res://menus/": "green",
 "res://scenes/": "orange",
+"res://shaders/": "pink",
 "res://src/": "red",
 "res://themes/": "green"
 }
@@ -107,3 +108,4 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 textures/decals/filter=0
+environment/defaults/default_environment="uid://dmjfuwhjaia60"

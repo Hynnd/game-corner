@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvkl6xaefrf4c"]
+
+[ext_resource type="Script" uid="uid://cxkeqpnadmvcq" path="res://src/player_minigame_status/player_minigame_status.gd" id="1_s6o64"]
+
+[node name="PlayerMinigameStatus" type="Node"]
+script = ExtResource("1_s6o64")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+offset_right = 683.0
+grow_vertical = 0

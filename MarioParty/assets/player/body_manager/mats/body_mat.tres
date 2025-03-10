@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bg5y6ue5p2sfy"]
+
+[ext_resource type="Material" uid="uid://cnsln5fp7upms" path="res://shaders/mats/default_outline.tres" id="1_67v3j"]
+[ext_resource type="Shader" uid="uid://c7eh3jnoq2wfx" path="res://shaders/toon.gdshader" id="2_8i5se"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_67v3j")
+shader = ExtResource("2_8i5se")
+shader_parameter/color = Color(0.84, 0.84, 0.84, 1)
+shader_parameter/shade = 0.545
+shader_parameter/shade_angles = Vector3(1.305, 2.99, 0.425)
+shader_parameter/shade_color = Color(0, 0.0480001, 0.48, 1)
