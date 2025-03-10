@@ -22,6 +22,6 @@ func _physics_process(delta: float) -> void:
 			owner.velocity *= 0
 			owner.movement_normal.move_input *= 0
 		
-		_marker.position = Vector3(point.x, owner.global_position.y, point.y)
+		#_marker.position = Vector3(point.x, owner.global_position.y, point.y)
 	
-	_marker.visible = target_points.size() > 0
+	#_marker.visible = target_points.size() > 0

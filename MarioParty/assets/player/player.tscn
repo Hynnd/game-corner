@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://w3f6s8ctp428" path="res://assets/player/movement/movement_normal.gd" id="2_d5dr7"]
 [ext_resource type="PackedScene" uid="uid://1quaodva78dk" path="res://assets/player/body_manager/body_manager.tscn" id="3_ouxva"]
 [ext_resource type="Script" uid="uid://pggdogo4hsp1" path="res://assets/player/movement/movement_animated.gd" id="3_toylo"]
-[ext_resource type="Script" uid="uid://cqtls5eh1c726" path="res://assets/player/camera/camera_first.gd" id="5_d5dr7"]
-[ext_resource type="Script" uid="uid://b3b2xpvny3h" path="res://assets/player/camera/camera_third.gd" id="6_toylo"]
+[ext_resource type="Script" uid="uid://cqtls5eh1c726" path="res://assets/player/camera_modes/camera_first.gd" id="5_d5dr7"]
+[ext_resource type="Script" uid="uid://b3b2xpvny3h" path="res://assets/player/camera_modes/camera_third.gd" id="6_toylo"]
 [ext_resource type="Script" uid="uid://dc3qhl0jit4y6" path="res://src/health/health.gd" id="7_tb4ck"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5dr7"]
@@ -57,6 +57,7 @@ script = ExtResource("3_toylo")
 
 [node name="TargetPointMarker" type="MeshInstance3D" parent="MovementAnimated"]
 physics_interpolation_mode = 2
+visible = false
 material_override = SubResource("StandardMaterial3D_toylo")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_toylo")

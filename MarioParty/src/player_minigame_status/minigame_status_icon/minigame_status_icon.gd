@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var id
+var id:int
 
 @onready var color_rect: ColorRect = %ColorRect
 @onready var label: Label = %Label
@@ -8,4 +8,4 @@ var id
 
 func _process(delta: float) -> void:
 	color_rect.color = GameState.players[id].color
-	label.color = GameState.players[id].mini_coins
+	label.text = str(GameState.players[id].minigame_coins)

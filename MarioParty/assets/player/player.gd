@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
-@export var player_id:int = 0
+var player_id:int = 0
+
 var current_tile_name:String:
 	get:
 		if GameState.player_tiles.has(player_id):

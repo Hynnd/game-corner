@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4mdiyubqcb4n"]
+[gd_scene load_steps=9 format=3 uid="uid://b4mdiyubqcb4n"]
 
 [ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/_placeholder_mat.tres" id="1_ciecv"]
 [ext_resource type="Script" uid="uid://u8om2hftbm76" path="res://scenes/minigame.gd" id="1_nyheh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/items/automatic_rifle/automatic_rifle.tscn" id="5_egoj0"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="6_7e1rl"]
 [ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="6_egoj0"]
+[ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_minigame_status/player_minigame_status.tscn" id="8_7e1rl"]
 
 [node name="3DTest" type="Node"]
 script = ExtResource("1_nyheh")
@@ -132,4 +133,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
 
 [node name="RoundTimer" parent="." instance=ExtResource("6_egoj0")]
-round_time = 30.0
+round_time = 3600.0
+
+[node name="PlayerMinigameStatus" parent="." instance=ExtResource("8_7e1rl")]

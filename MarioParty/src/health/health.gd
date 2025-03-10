@@ -1,4 +1,4 @@
-@icon("hp.svg")
+@icon("health.svg")
 class_name Health extends Node
 
 signal hurt

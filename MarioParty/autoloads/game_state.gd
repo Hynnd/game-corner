@@ -4,6 +4,14 @@ signal finished_walking
 signal current_player_incremented
 signal player_added
 
+const PLAYER_STATE:Dictionary = {
+	"id": -1,
+	"index": -1,
+	"color": Color.WHITE,
+	"coins": 0,
+	"minigame_coins": 0,
+}
+
 var players:Dictionary[int, Dictionary] = {} # ID, Dict
 var current_id:int # ID
 
@@ -48,9 +56,9 @@ func get_id_by_index(index:int) -> int:
 
 @rpc("any_peer", "call_local", "reliable")
 func add_player(id:int) -> void:
-	if not players.has(id):
-		players[id] = {}
-	players[id]["color"] = Color.WHITE
+	if players.has(id): return
+	
+	players[id] = PLAYER_STATE.duplicate()
 	
 	player_added.emit()
 
