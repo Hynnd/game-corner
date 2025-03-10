@@ -21,6 +21,10 @@ GameState="*res://autoloads/game_state.gd"
 ScreenSplitter="*res://autoloads/screen_splitter.gd"
 Multiplayer="*res://autoloads/multiplayer.gd"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+
 [display]
 
 window/size/viewport_width=960

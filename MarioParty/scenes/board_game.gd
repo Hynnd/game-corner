@@ -21,17 +21,22 @@ func _ready() -> void:
 	if GameState.current_id == multiplayer.get_unique_id():
 		%DoNextMenu.get_node("DoNextMenu").show()
 	
-	#_initialize_players()
-	
 	if GameState.player_tiles.size() == 0:
 		for id in GameState.players.keys():
 			GameState.player_tiles[id] = GameState.start_tile.name
 	
 	for id in GameState.players.keys():
-		var node = GameState.players[id].node
+		#var node = GameState.players[id].node
+		var node = GameState.player_nodes[id]
 		node.face_camera()
 		node.can_move = false
 		node.can_jump = false
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	%ForceStartMinigame.pressed.connect(func():
+		GameState.play_minigame.rpc()
+		)
 
 
 func _process(delta: float) -> void:
@@ -40,22 +45,3 @@ func _process(delta: float) -> void:
 	$Label.text += str("current_id: ", GameState.current_id, "\n")
 	$Label.text += str("current_index: ", GameState.players[GameState.current_id].index, "\n")
 	$Label.text += str("num: ", GameState.players.size(), "\n")
-
-
-#func _initialize_players() -> void:
-	#var player_ids:Array = []
-	#player_ids.append(multiplayer.get_unique_id())
-	#player_ids.append_array(multiplayer.get_peers())
-	#player_ids.sort()
-	#
-	#for i in player_ids.size():
-		#var id = player_ids[i]
-		#
-		#var new_player = preload("res://assets/player/player.tscn").instantiate()
-		#new_player.global_position = Vector3(i,3,0)
-		#new_player.collision_mask -= 2
-		#new_player.player_id = id
-		#new_player.sync_movement = false
-		#add_child(new_player)
-		#
-		#GameState.players[id] = {"index": i, "node": new_player}

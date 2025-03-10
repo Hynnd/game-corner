@@ -6,13 +6,10 @@ const ACCEL_AIR:float = 0.2
 
 const GRAVITY_DOWN:float = 1.09
 
-@export var move_input:Vector2
-var move_dir:Vector2
+var move_input:Vector2
+@export var move_dir:Vector2
 
 @export var synced_velocity:Vector3
-	#set(value):
-		#owner.velocity = value
-		#synced_velocity = value
 
 var t1:Tween
 
@@ -20,7 +17,7 @@ var t1:Tween
 func _physics_process(delta: float) -> void:
 	if owner.can_move and owner.is_owner():
 		move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	move_dir = move_input.rotated(-get_viewport().get_camera_3d().global_rotation.y)
+		move_dir = move_input.rotated(-get_viewport().get_camera_3d().global_rotation.y)
 	
 	# Puppet
 	if not synced_velocity.is_zero_approx():

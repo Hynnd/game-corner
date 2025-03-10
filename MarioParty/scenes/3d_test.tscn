@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4mdiyubqcb4n"]
+[gd_scene load_steps=8 format=3 uid="uid://b4mdiyubqcb4n"]
 
 [ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/_placeholder_mat.tres" id="1_ciecv"]
 [ext_resource type="Script" uid="uid://u8om2hftbm76" path="res://scenes/minigame.gd" id="1_nyheh"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_env.tres" id="2_dprcw"]
-[ext_resource type="PackedScene" uid="uid://rhyptelcw8cx" path="res://player_spawner.tscn" id="5_js724"]
+[ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="4_v6qjf"]
+[ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/items/automatic_rifle/automatic_rifle.tscn" id="5_egoj0"]
+[ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="6_7e1rl"]
+[ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="6_egoj0"]
 
 [node name="3DTest" type="Node"]
 script = ExtResource("1_nyheh")
@@ -31,6 +34,12 @@ material = ExtResource("1_ciecv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -11)
 use_collision = true
 size = Vector3(6, 4, 6)
+material = ExtResource("1_ciecv")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -19.5)
+use_collision = true
+size = Vector3(6, 2, 11)
 material = ExtResource("1_ciecv")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="."]
@@ -81,4 +90,45 @@ use_collision = true
 size = Vector3(6, 3, 6)
 material = ExtResource("1_ciecv")
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("5_js724")]
+[node name="PlayerSpawner" type="Node3D" parent="."]
+script = ExtResource("4_v6qjf")
+pick_random = true
+item = ExtResource("5_egoj0")
+camera_mode = 3
+
+[node name="Spawnpoint" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+
+[node name="Spawnpoint2" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Spawnpoint3" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Spawnpoint4" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+
+[node name="Spawnpoint5" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+
+[node name="Spawnpoint6" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="Spawnpoint7" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="Spawnpoint8" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Spawnpoint9" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Spawnpoint10" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Spawnpoint11" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="Spawnpoint12" parent="PlayerSpawner" instance=ExtResource("6_7e1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
+
+[node name="RoundTimer" parent="." instance=ExtResource("6_egoj0")]

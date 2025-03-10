@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16"
+   viewBox="0 0 16 16"
+   width="16"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="health.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="true"
+     inkscape:zoom="41.75"
+     inkscape:cx="4.5508982"
+     inkscape:cy="7.9520958"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4">
+    <inkscape:grid
+       type="xygrid"
+       id="grid792" />
+  </sodipodi:namedview>
+  <path
+     d="m 13,5 c 0.604938,0.6347279 1,2 -1,4 L 9,12 V 6 c 1,-2 3.034369,-2.0131824 4,-1 z m 0,5 C 15,8 16,6 14,4 11.649633,2.0516887 10,3 8,5 5.9121079,2.8443247 4,2 2,4 0,6 1,8 3,10 l 5,5"
+     fill="#e0e0e0"
+     id="path2"
+     sodipodi:nodetypes="scccsccccsc" />
+</svg>

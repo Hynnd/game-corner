@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://t05iqk20633f"]
+[gd_scene load_steps=13 format=3 uid="uid://t05iqk20633f"]
 
 [ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_game.gd" id="1_v8odh"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_env.tres" id="2_02cv7"]
 [ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="2_ayvlx"]
 [ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/do_next_menu.tscn" id="3_8orke"]
 [ext_resource type="Script" uid="uid://g16nh8p3juem" path="res://scenes/board_camera.gd" id="5_l72a0"]
-[ext_resource type="PackedScene" uid="uid://rhyptelcw8cx" path="res://player_spawner.tscn" id="6_l72a0"]
+[ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="6_ihyv1"]
+[ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_j33e7"]
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="8_j33e7"]
 
 [sub_resource type="Gradient" id="Gradient_8orke"]
 interpolation_mode = 1
@@ -78,22 +80,30 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 26
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("6_l72a0")]
+[node name="PlayerSpawner" type="Node3D" parent="."]
+script = ExtResource("6_ihyv1")
 sync_movement = false
 can_jump = false
 can_move = false
 player_collision = false
 
-[node name="Point1" parent="PlayerSpawner" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39787, 0, 0)
+[node name="Spawnpoint" parent="PlayerSpawner" instance=ExtResource("7_j33e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
-[node name="Point2" parent="PlayerSpawner" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08328, 0, 1.9963)
+[node name="Spawnpoint2" parent="PlayerSpawner" instance=ExtResource("7_j33e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
 
-[node name="Point3" parent="PlayerSpawner" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64554, 0, -1.50462)
+[node name="Spawnpoint3" parent="PlayerSpawner" instance=ExtResource("7_j33e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 
-[node name="Point4" parent="PlayerSpawner" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59086, 0, -2.37762)
+[node name="Spawnpoint4" parent="PlayerSpawner" instance=ExtResource("7_j33e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[editable path="PlayerSpawner"]
+[node name="ForceStartMinigame" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 739.0
+offset_top = 436.0
+offset_right = 933.0
+offset_bottom = 474.0
+theme = ExtResource("8_j33e7")
+text = "Start Minigame*"

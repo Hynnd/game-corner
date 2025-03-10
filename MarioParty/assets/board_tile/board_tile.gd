@@ -30,7 +30,8 @@ func get_pos() -> Vector2:
 	var players_on_tile = 0
 	for id in GameState.player_tiles.keys():
 		var tile_name = GameState.player_tiles[id]
-		if tile_name == name and global_position.distance_to(GameState.players[id].node.global_position) < 2:
+		#if tile_name == name and global_position.distance_to(GameState.players[id].node.global_position) < 2:
+		if tile_name == name and global_position.distance_to(GameState.player_nodes[id].global_position) < 2:
 			players_on_tile += 1
 	
 	return Swizzler.xz(global_position) + offsets[players_on_tile]

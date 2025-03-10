@@ -15,7 +15,6 @@ var moving:bool = false
 enum MoveMode { NORMAL, SIDE } 
 enum CameraMode { TOP, SIDE, THIRD, FIRST, NONE } 
 
-#@export var sync_movement:bool = true
 @export var move_mode := MoveMode.NORMAL
 @export var camera_mode := CameraMode.TOP
 @export var can_jump:bool = true
@@ -29,6 +28,7 @@ enum CameraMode { TOP, SIDE, THIRD, FIRST, NONE }
 @onready var movement_animated: Node = %MovementAnimated
 @onready var body_manager: Node3D = %BodyManager
 @onready var visuals: Node3D = %Visuals
+@onready var health: Health = %Health
 
 @onready var synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
@@ -68,7 +68,7 @@ func _tile_moving():
 			tile.on_player_passed(player_id)
 		
 		var next_tile = GameState.find_tile(current_tile_name).next_tiles[0]
-		walk_to_point(next_tile.get_pos(), 6)
+		walk_to_point(next_tile.get_pos(), 12)
 		current_tile_name = next_tile.name
 		
 		current_moves -= 1
@@ -100,3 +100,10 @@ func face_camera():
 
 func is_owner() -> bool:
 	return player_id == multiplayer.get_unique_id()
+
+
+func take_damage(atk:AttackEvent):
+	if atk.owner_id == player_id: return
+	
+	health.damage(atk.damage)
+	velocity += atk.knockback

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://choqcrr8jrj33"]
+
+[ext_resource type="Script" uid="uid://b6tgcr5xhae2b" path="res://menus/join_host_menu/character_color_button/character_color_button.gd" id="1_3kmsq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kmsq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CharacterColorButton" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 6.0
+offset_bottom = 6.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_3kmsq")
+script = ExtResource("1_3kmsq")

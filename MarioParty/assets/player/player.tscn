@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8bp2gr3um1kk"]
+[gd_scene load_steps=12 format=3 uid="uid://c8bp2gr3um1kk"]
 
 [ext_resource type="Script" uid="uid://ctmhdhn5megwr" path="res://assets/player/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://w3f6s8ctp428" path="res://assets/player/movement/movement_normal.gd" id="2_d5dr7"]
@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://pggdogo4hsp1" path="res://assets/player/movement/movement_animated.gd" id="3_toylo"]
 [ext_resource type="Script" uid="uid://cqtls5eh1c726" path="res://assets/player/camera/camera_first.gd" id="5_d5dr7"]
 [ext_resource type="Script" uid="uid://b3b2xpvny3h" path="res://assets/player/camera/camera_third.gd" id="6_toylo"]
+[ext_resource type="Script" uid="uid://dc3qhl0jit4y6" path="res://src/health/health.gd" id="7_tb4ck"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5dr7"]
 radius = 0.361655
-height = 0.959616
+height = 1.57314
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toylo"]
 shading_mode = 0
@@ -22,10 +23,10 @@ size = Vector3(0.2, 1.715, 0.2)
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("MovementNormal:move_input")
+properties/1/path = NodePath("MovementNormal:synced_velocity")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("MovementNormal:synced_velocity")
+properties/2/path = NodePath("MovementNormal:move_dir")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
@@ -38,8 +39,13 @@ JUMP_FORCE = 9.2
 GRAVITY = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.479797, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783121, 0)
 shape = SubResource("CapsuleShape3D_d5dr7")
+
+[node name="Health" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_tb4ck")
+metadata/_custom_type_script = "uid://dc3qhl0jit4y6"
 
 [node name="MovementNormal" type="Node" parent="."]
 unique_name_in_owner = true
@@ -68,7 +74,7 @@ script = ExtResource("6_toylo")
 transform = Transform3D(1, 0, 0, 0, 0.902217, 0.431283, 0, -0.431283, 0.902217, 9.53674e-07, 3.42921, 5.40248)
 
 [node name="FirstPersonCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43879, 0)
 script = ExtResource("5_d5dr7")
 
 [node name="DebugLabel" type="Label3D" parent="."]

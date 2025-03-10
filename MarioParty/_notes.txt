@@ -1,5 +1,6 @@
 - main menu
-- characher select
 - draw face
 - add body pushing
-- fix jittering
+- characher create menu (chose color)
+- board game rules and map
+- quake minigame
