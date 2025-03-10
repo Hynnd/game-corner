@@ -3,21 +3,27 @@ extends Node
 signal finished_walking
 signal current_player_incremented
 signal player_added
+signal players_spawned
 
 const PLAYER_STATE:Dictionary = {
-	"id": -1,
 	"index": -1,
 	"color": Color.WHITE,
 	"coins": 0,
 	"minigame_coins": 0,
 }
+const ATTACK_EVENT:Dictionary = {
+	"damage": 0,
+	"knockback": Vector3.ZERO,
+	"owner_id": -1,
+}
 
 var players:Dictionary[int, Dictionary] = {} # ID, Dict
-var current_id:int # ID
+var current_id:int = -1 # ID
 
 var player_tiles:Dictionary[int, String] = {} # ID, Tile name
-var player_nodes:Dictionary[int, Node3D] = {} # ID, Node
+var player_nodes:Dictionary[int, Node3D] = {} # ID, Node3D
 var start_tile:Node3D
+var player_spawner:Node3D
 
 
 func find_tile(tile_name:String) -> Node3D:
@@ -30,17 +36,16 @@ func find_tile(tile_name:String) -> Node3D:
 
 @rpc("any_peer", "call_local", "reliable")
 func return_to_board() -> void:
-	get_tree().change_scene_to_file("res://scenes/board_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/board_games/board_game.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")
 func play_minigame() -> void:
-	get_tree().change_scene_to_file("res://scenes/3d_test.tscn")
+	get_tree().change_scene_to_file("res://scenes/minigames/minigame_shooter.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")
 func increment_current_player() -> void:
-	var player_ids = players.keys()
 	var index = players[current_id].index
 	current_id = get_id_by_index((index+1) % players.size())
 	

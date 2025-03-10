@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://t05iqk20633f"]
 
-[ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_game.gd" id="1_v8odh"]
-[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_env.tres" id="2_02cv7"]
+[ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_games/board_game.gd" id="1_v8odh"]
+[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="2_02cv7"]
 [ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="2_ayvlx"]
 [ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/do_next_menu.tscn" id="3_8orke"]
-[ext_resource type="Script" uid="uid://g16nh8p3juem" path="res://scenes/board_camera.gd" id="5_l72a0"]
+[ext_resource type="PackedScene" uid="uid://5dw5h0c6ke7b" path="res://assets/player/camera_controllers/board_camera.tscn" id="4_6ltim"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="6_ihyv1"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_j33e7"]
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="8_j33e7"]
@@ -67,19 +67,16 @@ next_tiles = [NodePath("../BoardTile5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 next_tiles = [NodePath("../BoardTile")]
 
-[node name="CameraOrbit" type="Node3D" parent="."]
-script = ExtResource("5_l72a0")
-
-[node name="Camera3D" type="Camera3D" parent="CameraOrbit"]
-transform = Transform3D(1, 0, 0, 0, 0.901719, 0.432323, 0, -0.432323, 0.901719, 0, 3.91374, 6.52097)
-
 [node name="DoNextMenu" parent="." instance=ExtResource("3_8orke")]
 unique_name_in_owner = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 26
+
+[node name="BoardCamera" parent="." instance=ExtResource("4_6ltim")]
 
 [node name="PlayerSpawner" type="Node3D" parent="."]
 script = ExtResource("6_ihyv1")
@@ -102,10 +99,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="ForceStartMinigame" type="Button" parent="."]
 unique_name_in_owner = true
-offset_left = 739.0
-offset_top = 436.0
-offset_right = 933.0
-offset_bottom = 474.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -59.0
+offset_right = -39.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("8_j33e7")
 text = "Start Minigame*"
 

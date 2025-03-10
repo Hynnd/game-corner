@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhmo0g70axa82"]
+
+[ext_resource type="Script" uid="uid://cqtls5eh1c726" path="res://assets/player/camera_controllers/first_person_camera.gd" id="1_i3k2l"]
+
+[node name="FirstPersonCamera" type="Node3D"]
+script = ExtResource("1_i3k2l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43879, 0)

@@ -29,7 +29,6 @@ var t1:Tween
 
 func _ready() -> void:
 	var mat = meshes[0].material_override.duplicate()
-	#mat.albedo_color = GameState.players[owner.player_id].color
 	mat.set_shader_parameter("color", GameState.players[owner.player_id].color)
 	for node in meshes:
 		node.material_override = mat
@@ -43,10 +42,6 @@ func _process(delta: float) -> void:
 		var ang = -Swizzler.xz(vel).angle()-PI/2
 		legs.rotation.y = lerp_angle(legs.rotation.y, ang, min(delta * 7, 1))
 		arms.rotation.y = lerp_angle(arms.rotation.y, ang, min(delta * 11, 1))
-		#head.rotation.y = lerp_angle(head.rotation.y, ang, min(delta * 18, 1))
-		
-		#var ang2 = ang - (-(move_dir).angle()-PI/2)
-		#chest.rotation.z = lerp(chest.rotation.z, ang2*0.5, min(delta * 18, 1))
 	
 	if move_dir.length() > 0.5:
 		var ang = -move_dir.angle()-PI/2

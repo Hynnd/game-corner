@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://igx28f4k654l"
-path="res://.godot/imported/balloon man1.glb-dd985c7cb2145c5bdb87b4f014d3feb1.scn"
+path="res://.godot/imported/balloon man1.glb-a07c680bf3615f64646e06bff9042db2.scn"
 
 [deps]
 
-source_file="res://assets/player/body_manager/balloon man1.glb"
-dest_files=["res://.godot/imported/balloon man1.glb-dd985c7cb2145c5bdb87b4f014d3feb1.scn"]
+source_file="res://assets/player/body_manager/other/balloon man1.glb"
+dest_files=["res://.godot/imported/balloon man1.glb-a07c680bf3615f64646e06bff9042db2.scn"]
 
 [params]
 

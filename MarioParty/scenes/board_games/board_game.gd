@@ -15,6 +15,9 @@ func _ready() -> void:
 		if GameState.current_id == multiplayer.get_unique_id():
 			%DoNextMenu.get_node("DoNextMenu").show()
 		)
+	%ForceStartMinigame.pressed.connect(func():
+		GameState.play_minigame.rpc()
+		)
 	
 	GameState.current_id = 1
 	
@@ -25,18 +28,15 @@ func _ready() -> void:
 		for id in GameState.players.keys():
 			GameState.player_tiles[id] = GameState.start_tile.name
 	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	await GameState.players_spawned
+	
 	for id in GameState.players.keys():
-		#var node = GameState.players[id].node
 		var node = GameState.player_nodes[id]
 		node.face_camera()
 		node.can_move = false
 		node.can_jump = false
-	
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-	%ForceStartMinigame.pressed.connect(func():
-		GameState.play_minigame.rpc()
-		)
 
 
 func _process(delta: float) -> void:

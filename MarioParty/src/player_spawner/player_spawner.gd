@@ -7,7 +7,6 @@ extends Node3D
 @export_group("Player Parameters")
 @export var sync_movement:bool = true
 @export var move_mode := Player.MoveMode.NORMAL
-@export var camera_mode := Player.CameraMode.TOP
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export var player_collision:bool = true
@@ -15,6 +14,9 @@ extends Node3D
 @export var JUMP_FORCE:float = 8
 @export var GRAVITY:float = 22
 
+
+func _enter_tree() -> void:
+	GameState.player_spawner = self
 
 
 func _ready() -> void:
@@ -37,18 +39,17 @@ func _ready() -> void:
 		new_player.player_id = id
 		new_player.can_jump = can_jump
 		new_player.can_move = can_move
-		new_player.camera_mode = camera_mode
 		new_player.move_mode = move_mode
 		add_child(new_player)
 		
 		if is_instance_valid(item):
 			var new_item = item.instantiate()
 			new_player.add_child(new_item)
-		
-		GameState.player_nodes[id] = new_player
 	
 	for point in points:
 		point.hide()
+	
+	GameState.players_spawned.emit()
 
 
 func get_random_point() -> Vector3:

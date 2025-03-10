@@ -1,8 +1,10 @@
 extends Control
 
-@onready var label: Label = $Label
+@onready var label: Label = %DebugLabel
 @onready var ready_button: Button = %Ready
 @onready var force_start_button: Button = %ForceStart
+@onready var color_container: HBoxContainer = %ColorContainer
+@onready var balloon_rect: TextureRect = %BalloonRect
 
 var num_ready_players:int = 0
 
@@ -22,10 +24,10 @@ func _ready() -> void:
 	multiplayer.connected_to_server.connect(func():
 		await GameState.player_added
 		await get_tree().create_timer(0.1).timeout
-		$HBoxContainer.get_child(multiplayer.get_peers().size()).on_pressed()
+		color_container.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
 	Multiplayer.server_created.connect(func():
-		$HBoxContainer.get_child(multiplayer.get_peers().size()).on_pressed()
+		color_container.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
 
 
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 	
 	var id = multiplayer.get_unique_id()
 	if GameState.players.has(id) and GameState.players[id].has("color"):
-		$TextureRect.modulate = GameState.players[id].color
+		balloon_rect.modulate = GameState.players[id].color
 
 
 @rpc("any_peer", "call_local", "reliable")
@@ -49,7 +51,7 @@ func start_game(sorted_ids:Array) -> void:
 		var id = sorted_ids[i]
 		GameState.players[id].index = i
 	
-	get_tree().change_scene_to_file("res://scenes/board_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/board_games/board_game.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")

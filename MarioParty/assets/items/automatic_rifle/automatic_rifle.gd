@@ -17,15 +17,18 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	if not is_multiplayer_authority(): return
+	
 	var cam = get_viewport().get_camera_3d()
 	var cam_rot = cam.rotation_degrees
 	
-	#randomize()
-	#cam.rotation_degrees.y += randf_range(-1.5, 1.5)
-	#cam.rotation_degrees.x += 1.5
-	
-	
-	
+	var col = ray.get_collider()
+	if is_instance_valid(col) and col.has_method("take_damage"):
+		var atk = GameState.ATTACK_EVENT.duplicate()
+		atk.damage = 1
+		col.take_damage.rpc(atk)
+		
+		
 
 
 func update_transforms() -> void:

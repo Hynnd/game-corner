@@ -10,14 +10,9 @@ var current_tile_name:String:
 	set(value):
 		GameState.player_tiles[player_id] = value
 
-var current_moves:int = 0
-var moving:bool = false
-
 enum MoveMode { NORMAL, SIDE } 
-enum CameraMode { TOP, SIDE, THIRD, FIRST, NONE } 
 
 @export var move_mode := MoveMode.NORMAL
-@export var camera_mode := CameraMode.TOP
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export_group("Stats")
@@ -26,12 +21,16 @@ enum CameraMode { TOP, SIDE, THIRD, FIRST, NONE }
 @export var GRAVITY:float = 22
 
 @onready var movement_normal: Node = %MovementNormal
-@onready var movement_animated: Node = %MovementAnimated
+@onready var movement_board: Node = %MovementBoard
 @onready var body_manager: Node3D = %BodyManager
 @onready var visuals: Node3D = %Visuals
 @onready var health: Health = %Health
 
 @onready var synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+
+
+func _enter_tree() -> void:
+	GameState.player_nodes[player_id] = self
 
 
 func _ready() -> void:
@@ -42,52 +41,25 @@ func _ready() -> void:
 	
 	await get_tree().current_scene.ready
 	
-	# Move player to tile
+	# Place player on tile when returning to board
 	if current_tile_name != "":
 		var tile = GameState.find_tile(current_tile_name)
 		if is_instance_valid(tile):
 			var pos = tile.get_pos()
 			global_position = Vector3(pos.x, 0, pos.y)
-	
 
 
 func _physics_process(delta: float) -> void:
-	_tile_moving()
-	
 	%DebugLabel.text = ""
 	%DebugLabel.text += str("ID: ", player_id, "\n")
 	
 	$MultiplayerSynchronizer.public_visibility = can_move
 
 
-func _tile_moving():
-	if current_moves > 0 and movement_animated.target_points.size() == 0:
-		moving = true
-		
-		var tile = GameState.find_tile(current_tile_name)
-		if tile.has_method("on_player_passed"):
-			tile.on_player_passed(player_id)
-		
-		var next_tile = GameState.find_tile(current_tile_name).next_tiles[0]
-		walk_to_point(next_tile.get_pos(), 12)
-		current_tile_name = next_tile.name
-		
-		current_moves -= 1
-	if moving and current_moves == 0 and movement_animated.target_points.size() == 0:
-		moving = false
-		face_camera()
-		
-		var tile = GameState.find_tile(current_tile_name)
-		if tile.has_method("on_player_stopped"):
-			tile.on_player_stopped(player_id)
-		
-		GameState.finished_walking.emit()
-
-
 func walk_to_point(_point:Vector2, _speed:float) -> void:
-	movement_animated.target_points.clear()
-	movement_animated.target_points.append(_point)
-	movement_animated.move_speed = _speed
+	movement_board.target_points.clear()
+	movement_board.target_points.append(_point)
+	movement_board.move_speed = _speed
 	can_move = false
 	can_jump = false
 
@@ -103,8 +75,11 @@ func is_owner() -> bool:
 	return player_id == multiplayer.get_unique_id()
 
 
-func take_damage(atk:AttackEvent):
+@rpc("any_peer", "call_local", "reliable")
+func take_damage(atk:Dictionary):
 	if atk.owner_id == player_id: return
 	
 	health.damage(atk.damage)
 	velocity += atk.knockback
+	
+	global_position = GameState.player_spawner.get_random_point()
