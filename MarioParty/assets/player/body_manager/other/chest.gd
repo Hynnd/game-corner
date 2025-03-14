@@ -10,6 +10,8 @@ var _jump_offset:float = 0
 
 
 func _process(delta: float) -> void:
+	if owner.disabled: return
+	
 	progress += delta * STEP_FREQ * Swizzler.xz(owner.player.velocity).length()
 	
 	position.y = _height + _jump_offset + sin(progress) * STEP_AMP

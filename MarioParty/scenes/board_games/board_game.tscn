@@ -52,110 +52,115 @@ size = Vector3(193.236, 1, 236.899)
 material = SubResource("ShaderMaterial_8vwt7")
 metadata/_edit_lock_ = true
 
-[node name="BoardTile" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 is_start = true
-next_tiles = [NodePath("../BoardTile2")]
+next_tile = NodePath("../BoardTile2")
 
-[node name="BoardTile2" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile2" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-next_tiles = [NodePath("../BoardTile3")]
+next_tile = NodePath("../BoardTile3")
 
-[node name="BoardTile3" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile3" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
-next_tiles = [NodePath("../BoardTileSplit")]
+next_tile = NodePath("../BoardTileSplit")
 
-[node name="BoardTile24" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTileSplit" parent="." node_paths=PackedStringArray("next_tile_left", "next_tile_right") instance=ExtResource("10_8vwt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+next_tile_left = NodePath("../BoardTile4")
+next_tile_right = NodePath("../BoardTile24")
+
+[node name="BoardTile24" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
-next_tiles = [NodePath("../BoardTile25")]
+next_tile = NodePath("../BoardTile25")
 
-[node name="BoardTile25" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile25" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 7)
-next_tiles = [NodePath("../BoardTile26")]
+next_tile = NodePath("../BoardTile26")
 
-[node name="BoardTile26" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile26" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 7)
-next_tiles = [NodePath("../BoardTile8")]
+next_tile = NodePath("../BoardTile8")
 
-[node name="BoardTile4" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile4" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -2)
-next_tiles = [NodePath("../BoardTile5")]
+next_tile = NodePath("../BoardTile5")
 
-[node name="BoardTile5" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile5" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -6)
-next_tiles = [NodePath("../BoardTile6")]
+next_tile = NodePath("../BoardTile6")
 
-[node name="BoardTile6" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile6" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -6)
-next_tiles = [NodePath("../BoardTile7")]
+next_tile = NodePath("../BoardTile7")
 
-[node name="BoardTile7" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile7" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 0)
-next_tiles = [NodePath("../BoardTile8")]
+next_tile = NodePath("../BoardTile8")
 
-[node name="BoardTile8" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile8" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, 7)
-next_tiles = [NodePath("../BoardTile9")]
+next_tile = NodePath("../BoardTile9")
 
-[node name="BoardTile9" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile9" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 13)
-next_tiles = [NodePath("../BoardTile10")]
+next_tile = NodePath("../BoardTile10")
 
-[node name="BoardTile10" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile10" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 14)
-next_tiles = [NodePath("../BoardTile11")]
+next_tile = NodePath("../BoardTile11")
 
-[node name="BoardTile11" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile11" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 10)
-next_tiles = [NodePath("../BoardTile12")]
+next_tile = NodePath("../BoardTile12")
 
-[node name="BoardTile12" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile12" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 2)
-next_tiles = [NodePath("../BoardTile13")]
+next_tile = NodePath("../BoardTile13")
 
-[node name="BoardTile13" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile13" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -3)
-next_tiles = [NodePath("../BoardTile14")]
+next_tile = NodePath("../BoardTile14")
 
-[node name="BoardTile14" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile14" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -10)
-next_tiles = [NodePath("../BoardTile15")]
+next_tile = NodePath("../BoardTile15")
 
-[node name="BoardTile15" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile15" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -13)
-next_tiles = [NodePath("../BoardTile16")]
+next_tile = NodePath("../BoardTile16")
 
-[node name="BoardTile16" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile16" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -17)
-next_tiles = [NodePath("../BoardTile17")]
+next_tile = NodePath("../BoardTile17")
 
-[node name="BoardTile17" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile17" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -19)
-next_tiles = [NodePath("../BoardTile18")]
+next_tile = NodePath("../BoardTile18")
 
-[node name="BoardTile18" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile18" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -16)
-next_tiles = [NodePath("../BoardTile19")]
+next_tile = NodePath("../BoardTile19")
 
-[node name="BoardTile19" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile19" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -18)
-next_tiles = [NodePath("../BoardTile20")]
+next_tile = NodePath("../BoardTile20")
 
-[node name="BoardTile20" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile20" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -14)
-next_tiles = [NodePath("../BoardTile21")]
+next_tile = NodePath("../BoardTile21")
 
-[node name="BoardTile21" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile21" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -15)
-next_tiles = [NodePath("../BoardTile22")]
+next_tile = NodePath("../BoardTile22")
 
-[node name="BoardTile22" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile22" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -10)
-next_tiles = [NodePath("../BoardTile23")]
+next_tile = NodePath("../BoardTile23")
 
-[node name="BoardTile23" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+[node name="BoardTile23" parent="." node_paths=PackedStringArray("next_tile") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
-next_tiles = [NodePath("../BoardTile")]
+next_tile = NodePath("../BoardTile")
 
 [node name="DoNextMenu" parent="." instance=ExtResource("3_8orke")]
 unique_name_in_owner = true
@@ -202,9 +207,5 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("8_j33e7")
 text = "Start Minigame*"
-
-[node name="BoardTileSplit" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("10_8vwt7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
-next_tiles = [NodePath("../BoardTile4"), NodePath("../BoardTile24")]
 
 [node name="PlayerStatusBoard" parent="." instance=ExtResource("11_nei8j")]

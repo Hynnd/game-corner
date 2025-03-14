@@ -25,33 +25,26 @@ func _physics_process(delta: float) -> void:
 			owner.velocity *= 0
 			owner.movement_normal.move_input *= 0
 		
+		owner.movement_normal.move_dir = owner.movement_normal.move_input
+		
 		_marker.position = Vector3(target_point.x, owner.global_position.y, target_point.y)
 	
 	_tile_moving()
 	
 	moves_num.text = str(current_moves+1)
 	#moves_num.visible = moving
-	moves_num.visible = current_moves > 0
+	moves_num.visible = current_moves > 0 or moving
 
 
 
 func _tile_moving():
+	# Pass tile
 	if moving and current_moves > 0 and not target_point.is_finite():
 		var tile = GameState.find_tile(owner.current_tile_name)
 		if tile.has_method("on_player_passed"):
 			tile.on_player_passed(owner.id)
-		
-		#if current_moves == 0:
-			#if tile.has_method("on_player_stopped"):
-				#tile.on_player_stopped(owner.id)
-			#GameState.finished_walking.emit()
 	
-	#if moving and current_moves > 0 and target_points.size() == 0:
-		#var next_tile = GameState.find_tile(owner.current_tile_name).next_tiles[0]
-		#owner.walk_to_point(next_tile.get_pos())
-		#owner.current_tile_name = next_tile.name
-		#current_moves -= 1
-	
+	# Finish moving
 	if moving and current_moves == 0 and not target_point.is_finite():
 		moving = false
 		owner.face_camera()

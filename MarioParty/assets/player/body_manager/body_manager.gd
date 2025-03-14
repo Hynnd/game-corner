@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var disabled:bool = false
 @export var meshes:Array[Node3D]
 
 var _arms_sway:float = 0
@@ -16,25 +17,40 @@ var _arms_fall:float = 0
 @onready var foot_1: Node3D = %Foot1
 @onready var foot_2: Node3D = %Foot2
 @onready var chest: Node3D = %Chest
+@onready var decal: Decal = %Decal
 
-@onready var player: Node3D = owner
+var player: Node3D
 
 var _old_grounded:bool = true
 
 @onready var _head_height:float = head.position.y
 @onready var _arms_height:float = arms.position.y
 
-var t1:Tween
+var jump_tween:Tween
+
+@onready var _mat:Material = preload("res://assets/player/body_manager/mats/balloon_mat.tres").duplicate()
 
 
 func _ready() -> void:
-	var mat = meshes[0].material_override.duplicate()
-	mat.set_shader_parameter("color", GameState.players[owner.id].color)
 	for node in meshes:
-		node.material_override = mat
+		node.material_override = _mat
+	
+	if disabled: return
+	
+	_mat.set_shader_parameter("color", GameState.players[owner.id].color)
+	
+	player = owner
+	
+	if GameState.players[player.id].face != null:
+		var image = Image.new()
+		#image.data = GameState.players[player.id].face
+		image.load_png_from_buffer(GameState.players[player.id].face)
+		decal.texture_albedo = ImageTexture.create_from_image(image)
 
 
 func _process(delta: float) -> void:
+	if disabled: return
+	
 	var vel = owner.velocity
 	var move_dir = owner.movement_normal.move_dir
 	
@@ -84,23 +100,25 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if disabled: return
+	
 	# On landed
 	if _old_grounded and not player.is_on_floor():
-		if t1: t1.kill()
-		t1 = create_tween().set_trans(Tween.TRANS_SINE)
-		t1.tween_property(chest, "_jump_offset", -0.4, 0.15)
-		t1.tween_property(chest, "_jump_offset", 0.15, 0.4)
-		t1.tween_property(chest, "_jump_offset", 0.0, 0.25)
+		if jump_tween: jump_tween.kill()
+		jump_tween = create_tween().set_trans(Tween.TRANS_SINE)
+		jump_tween.tween_property(chest, "_jump_offset", -0.4, 0.15)
+		jump_tween.tween_property(chest, "_jump_offset", 0.15, 0.4)
+		jump_tween.tween_property(chest, "_jump_offset", 0.0, 0.25)
 	
 	# On landed
 	if not _old_grounded and player.is_on_floor():
-		if t1: t1.kill()
-		t1 = create_tween().set_trans(Tween.TRANS_SINE)
-		t1.tween_property(chest, "_jump_offset", -0.75, 0.09)
-		t1.tween_property(chest, "_jump_offset", 0.2, 0.34)
-		t1.tween_property(chest, "_jump_offset", -0.11, 0.3)
-		t1.tween_property(chest, "_jump_offset", 0.04, 0.3)
-		t1.tween_property(chest, "_jump_offset", 0.0, 0.3)
+		if jump_tween: jump_tween.kill()
+		jump_tween = create_tween().set_trans(Tween.TRANS_SINE)
+		jump_tween.tween_property(chest, "_jump_offset", -0.75, 0.09)
+		jump_tween.tween_property(chest, "_jump_offset", 0.2, 0.34)
+		jump_tween.tween_property(chest, "_jump_offset", -0.11, 0.3)
+		jump_tween.tween_property(chest, "_jump_offset", 0.04, 0.3)
+		jump_tween.tween_property(chest, "_jump_offset", 0.0, 0.3)
 		
 		for foot in [foot_1, foot_2]:
 			foot.take_step(get_physics_process_delta_time())

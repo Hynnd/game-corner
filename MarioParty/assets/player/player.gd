@@ -52,6 +52,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	%DebugLabel.text = ""
 	%DebugLabel.text += str("ID: ", id, "\n")
+	%DebugLabel.text += str("move_input: ", movement_normal.move_input, "\n")
+	%DebugLabel.text += str("move_dir: ", movement_normal.move_dir, "\n")
 	
 	$MultiplayerSynchronizer.public_visibility = can_move
 	

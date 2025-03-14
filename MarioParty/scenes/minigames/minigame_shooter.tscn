@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/_placeholder_mat.tres" id="3_gn6q1"]
 [ext_resource type="PackedScene" uid="uid://bhmo0g70axa82" path="res://assets/player/camera_controllers/first_person_camera.tscn" id="4_em6lj"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="5_x2u4r"]
-[ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/items/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
+[ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/tools/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_fnrs8"]
 [ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="8_06vtn"]
 [ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_status/player_status_minigame.tscn" id="9_jntm7"]

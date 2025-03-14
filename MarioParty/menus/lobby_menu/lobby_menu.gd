@@ -5,6 +5,8 @@ extends Control
 @onready var force_start_button: Button = %ForceStart
 @onready var color_container: HBoxContainer = %ColorContainer
 @onready var balloon_rect: TextureRect = %BalloonRect
+@onready var body_manager: Node3D = %BodyManager
+@onready var draw_canvas: TextureRect = %DrawCanvas
 
 var num_ready_players:int = 0
 
@@ -29,6 +31,9 @@ func _ready() -> void:
 	Multiplayer.server_created.connect(func():
 		color_container.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
+	draw_canvas.stopped_drawing.connect(func():
+		apply_face.rpc(Multiplayer.id, draw_canvas.image.save_png_to_buffer())
+		)
 
 
 func _process(delta: float) -> void:
@@ -42,6 +47,9 @@ func _process(delta: float) -> void:
 	var id = multiplayer.get_unique_id()
 	if GameState.players.has(id) and GameState.players[id].has("color"):
 		balloon_rect.modulate = GameState.players[id].color
+	
+	if GameState.players.keys().has(id):
+		body_manager._mat.set_shader_parameter("color", GameState.players[id].color)
 
 
 @rpc("any_peer", "call_local", "reliable")
@@ -71,3 +79,9 @@ func ready_up(force_start:bool = false):
 @rpc("any_peer", "call_local", "reliable")
 func unready():
 	num_ready_players -= 1
+
+
+@rpc("any_peer", "call_local", "reliable")
+func apply_face(id:int, image_data:PackedByteArray):
+	if not GameState.players.has(id): return
+	GameState.players[id].face = image_data

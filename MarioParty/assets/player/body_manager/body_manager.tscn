@@ -217,6 +217,7 @@ mesh = SubResource("ArrayMesh_2pejf")
 skeleton = NodePath("")
 
 [node name="Decal" type="Decal" parent="Chest/Head/Head"]
+unique_name_in_owner = true
 transform = Transform3D(-0.851743, -3.25483e-15, 7.44617e-08, -7.44617e-08, 3.72309e-08, -0.851743, 0, -0.851743, -3.72309e-08, 1.1101e-15, 1.40491, -0.715716)
 size = Vector3(2, 0.814941, 2)
 texture_albedo = ExtResource("4_sv3f5")

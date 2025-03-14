@@ -1,11 +1,10 @@
 extends Node3D
 
-const BOARD_TILE_LINE = preload("line/board_tile_line.tscn")
+const BOARD_TILE_LINE = preload("_line.tscn")
 
 @export var is_start:bool = false
-@export var consume_move:bool = true
-@export var next_tile_1:Node3D
-@export var next_tile_2:Node3D
+@export var next_tile_left:Node3D
+@export var next_tile_right:Node3D
 
 var _player_on_tile:int = -1
 
@@ -23,7 +22,7 @@ func _ready() -> void:
 
 
 func _create_lines() -> void:
-	for tile in next_tiles:
+	for tile in [next_tile_left, next_tile_right]:
 		var line = BOARD_TILE_LINE.instantiate()
 		var arrow = line.get_node("Arrow")
 		add_child(line)
@@ -36,29 +35,16 @@ func _create_lines() -> void:
 
 
 func get_pos() -> Vector2:
-	var offsets = [Vector2(0,-1),Vector2(0,1),Vector2(1,0),Vector2(-1,0),Vector2(-5,0)]
-	var players_on_tile = 0
-	for id in GameState.player_tiles.keys():
-		var tile_name = GameState.player_tiles[id]
-		if tile_name == name and global_position.distance_to(GameState.player_nodes[id].global_position) < 2:
-			players_on_tile += 1
-	
-	return Swizzler.xz(global_position) + offsets[players_on_tile]
+	return Swizzler.xz(global_position)
 
 
 func on_player_passed(id:int):
 	var player = GameState.player_nodes[id]
 	
-	if next_tiles.size() == 1:
-		var next_tile = next_tiles[0]
-		player.walk_to_point(next_tile.get_pos())
-		player.current_tile_name = next_tile.name
-		player.movement_board.current_moves -= 1
-	else:
-		player.movement_board.moving = false
-		if Multiplayer.id == GameState.current_id:
-			SplitPathPrompt.show()
-		_player_on_tile = id
+	player.movement_board.moving = false
+	if Multiplayer.id == GameState.current_id:
+		SplitPathPrompt.show()
+	_player_on_tile = id
 
 
 func on_player_stopped(id:int):
@@ -67,9 +53,8 @@ func on_player_stopped(id:int):
 
 @rpc("any_peer", "call_local", "reliable")
 func chose_path(path:int):
-	print(_player_on_tile)
 	if _player_on_tile != -1:
-		var next_tile = next_tiles[path]
+		var next_tile = next_tile_left if path == 0 else next_tile_right
 		SplitPathPrompt.hide()
 		GameState.player_nodes[_player_on_tile].walk_to_point(next_tile.get_pos())
 		GameState.player_nodes[_player_on_tile].current_tile_name = next_tile.name

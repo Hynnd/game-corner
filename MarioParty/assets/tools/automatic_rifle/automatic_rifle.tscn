@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgvuxqsfr4370"]
 
-[ext_resource type="Script" uid="uid://b4ku6yy61nqix" path="res://assets/items/automatic_rifle/automatic_rifle.gd" id="1_emv83"]
+[ext_resource type="Script" uid="uid://b4ku6yy61nqix" path="res://assets/tools/automatic_rifle/automatic_rifle.gd" id="1_emv83"]
 
 [sub_resource type="Gradient" id="Gradient_emv83"]
 interpolation_mode = 1

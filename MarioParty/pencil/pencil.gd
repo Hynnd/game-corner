@@ -1,12 +1,13 @@
-extends Node2D
+class_name Pencil extends Node2D
 
-@export var is_erasing:bool = false
+const SIZE_MIN:int = 6
+const SIZE_MAX:int = 33
+const SIZE_STEP:int = 3
 
-var size_min:int = 8
-var size_max:int = 48
-var size_step:int = 4
-
-var brush_size:int = 16
+static var brush_size:int = 15
+static var is_drawing:bool = false
+static var is_erasing:bool = false
+static var on_canvas:bool = false
 
 var velocity:Vector2
 
@@ -35,8 +36,11 @@ func _process(delta: float) -> void:
 	_animate(delta)
 	_change_brush_size()
 	
-	if Input.is_action_just_pressed("right_click"):
-		is_erasing = !is_erasing
+	if Input.is_action_just_pressed("right_click") or Input.is_action_just_released("right_click"):
+		if Input.is_action_just_pressed("right_click"):is_erasing = true
+		if Input.is_action_just_released("right_click"):is_erasing = false
+		
+		#is_erasing = !is_erasing
 		if er_tween: er_tween.kill()
 		er_tween = create_tween().set_trans(Tween.TRANS_SINE)
 		
@@ -53,27 +57,28 @@ func _process(delta: float) -> void:
 				_erase_rot_tar = 0
 				)
 	
+	visible = on_canvas
 	
 	_old_pos = position
 
 func _animate(delta:float):
-	var is_drawing = Input.is_action_pressed("left_click")
+	is_drawing = Input.is_action_pressed("left_click")
 	
 	var tar_z = 0
 	tar_z = velocity.y * 0.0012
 	tar_z += clampf(velocity.x, -0.7, 0.7)
-	if is_drawing:
+	if is_drawing or is_erasing:
 		_draw_sway_progress += delta * 34
 		tar_z += cos(_draw_sway_progress) * 0.4
 	else: _draw_sway_progress = 0
 	
 	pencil_sway.rotation.z = lerp_angle(pencil_sway.rotation.z, tar_z, min(20*delta,1))
 	
-	var tar_y = 0
-	if is_drawing:
-		tar_y = lerp_angle(tar_y, -3, 20 * delta)
-	
-	pencil_sway.rotation.y = lerp_angle(pencil_sway.rotation.y, tar_y, min(20*delta,1))
+	#var tar_y = 0
+	#if is_drawing or is_erasing:
+		#tar_y = lerp_angle(tar_y, -3, 20 * delta)
+	#
+	#pencil_sway.rotation.y = lerp_angle(pencil_sway.rotation.y, tar_y, min(20*delta,1))
 	
 	pencil_erase.rotation.z = _erase_rot
 
@@ -85,8 +90,8 @@ func _refresh_brush():
 
 func _change_brush_size():
 	if Input.is_action_just_pressed("scroll_down"):
-		brush_size = clampi(brush_size+size_step, size_min, size_max)
+		brush_size = clampi(brush_size+SIZE_STEP, SIZE_MIN, SIZE_MAX)
 		_refresh_brush()
 	if Input.is_action_just_pressed("scroll_up"):
-		brush_size = clampi(brush_size-size_step, size_min, size_max)
+		brush_size = clampi(brush_size-SIZE_STEP, SIZE_MIN, SIZE_MAX)
 		_refresh_brush()

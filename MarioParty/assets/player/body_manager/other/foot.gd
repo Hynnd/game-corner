@@ -14,10 +14,14 @@ var _cooldown_counter:float = 0
 
 
 func _ready() -> void:
+	if owner.disabled: return
+	
 	top_level = true
 
 
 func _process(delta:float) -> void:
+	if owner.disabled: return
+	
 	var parent = get_parent()
 	
 	if owner.player.is_on_floor():

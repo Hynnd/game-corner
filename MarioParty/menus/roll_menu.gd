@@ -20,6 +20,8 @@ func get_dice_roll() -> int:
 func grant_moves(num):
 	var player = GameState.player_nodes[GameState.current_id]
 	var cur_tile_name = GameState.player_tiles[GameState.current_id]
-	var next = GameState.find_tile(cur_tile_name).next_tiles[0]
+	var cur_tile = GameState.find_tile(cur_tile_name)
+	var next = GameState.find_tile(cur_tile_name).next_tile
+	
 	player.movement_board.current_moves = num
 	player.walk_to_point(next.get_pos())

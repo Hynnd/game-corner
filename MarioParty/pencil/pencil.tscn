@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_u4rgo"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0.757835, 0.837607, 1)
+offsets = PackedFloat32Array(0, 0.760684, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q5st3"]
@@ -15,10 +15,11 @@ width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.6)
+fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
 
 [node name="Pencil" type="Node2D"]
+z_index = 5
 script = ExtResource("1_pmwgo")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -48,6 +49,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(128, 128)

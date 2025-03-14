@@ -22,6 +22,7 @@ ScreenSplitter="*res://autoloads/screen_splitter.gd"
 Multiplayer="*res://autoloads/multiplayer.gd"
 Game="*res://autoloads/game.gd"
 SplitPathPrompt="*res://autoloads/split_path_prompt/split_path_prompt.tscn"
+FpsCounter="*res://autoloads/_fps_counter/_fps_counter.tscn"
 
 [debug]
 

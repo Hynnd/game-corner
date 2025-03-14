@@ -10,6 +10,7 @@ const PLAYER_STATE:Dictionary = {
 	"color": Color.WHITE,
 	"coins": 0,
 	"minigame_coins": 0,
+	"face": null,
 }
 const ATTACK_EVENT:Dictionary = {
 	"damage": 0,

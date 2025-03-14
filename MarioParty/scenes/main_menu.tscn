@@ -91,5 +91,9 @@ show_menu = NodePath("../../../LobbyMenu")
 visible = false
 layout_mode = 1
 
+[node name="SubViewport" parent="LobbyMenu/MarginContainer/HBoxContainer/VBoxContainer2/Container/SubViewportContainer" index="0"]
+render_target_update_mode = 0
+
 [editable path="JoinHostMenu"]
 [editable path="LobbyMenu"]
+[editable path="LobbyMenu/MarginContainer/HBoxContainer/VBoxContainer2/Container/SubViewportContainer/SubViewport/BodyManager"]

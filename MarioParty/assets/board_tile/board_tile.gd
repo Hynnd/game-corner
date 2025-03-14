@@ -1,10 +1,9 @@
 extends Node3D
 
-const BOARD_TILE_LINE = preload("line/board_tile_line.tscn")
+const BOARD_TILE_LINE = preload("_line.tscn")
 
 @export var is_start:bool = false
-@export var consume_move:bool = true
-@export var next_tiles:Array[Node3D]
+@export var next_tile:Node3D
 
 var _player_on_tile:int = -1
 
@@ -22,16 +21,15 @@ func _ready() -> void:
 
 
 func _create_lines() -> void:
-	for tile in next_tiles:
-		var line = BOARD_TILE_LINE.instantiate()
-		var arrow = line.get_node("Arrow")
-		add_child(line)
-		line.position = global_position.lerp(tile.global_position, 0.5)
-		line.scale.z = global_position.distance_to(tile.global_position)
-		line.rotation.y = -Swizzler.xz(tile.global_position - global_position).angle()-PI/2
-		
-		arrow.position = global_position.lerp(tile.global_position, 0.5)
-		arrow.rotation.y = -Swizzler.xz(tile.global_position - global_position).angle()-PI/2
+	var line = BOARD_TILE_LINE.instantiate()
+	var arrow = line.get_node("Arrow")
+	add_child(line)
+	line.position = global_position.lerp(next_tile.global_position, 0.5)
+	line.scale.z = global_position.distance_to(next_tile.global_position)
+	line.rotation.y = -Swizzler.xz(next_tile.global_position - global_position).angle()-PI/2
+	
+	arrow.position = global_position.lerp(next_tile.global_position, 0.5)
+	arrow.rotation.y = -Swizzler.xz(next_tile.global_position - global_position).angle()-PI/2
 
 
 func get_pos() -> Vector2:
@@ -47,17 +45,9 @@ func get_pos() -> Vector2:
 
 func on_player_passed(id:int):
 	var player = GameState.player_nodes[id]
-	
-	if next_tiles.size() == 1:
-		var next_tile = next_tiles[0]
-		player.walk_to_point(next_tile.get_pos())
-		player.current_tile_name = next_tile.name
-		player.movement_board.current_moves -= 1
-	else:
-		player.movement_board.moving = false
-		if Multiplayer.id == GameState.current_id:
-			SplitPathPrompt.show()
-		_player_on_tile = id
+	player.walk_to_point(next_tile.get_pos())
+	player.current_tile_name = next_tile.name
+	player.movement_board.current_moves -= 1
 
 
 func on_player_stopped(id:int):
@@ -66,9 +56,7 @@ func on_player_stopped(id:int):
 
 @rpc("any_peer", "call_local", "reliable")
 func chose_path(path:int):
-	print(_player_on_tile)
 	if _player_on_tile != -1:
-		var next_tile = next_tiles[path]
 		SplitPathPrompt.hide()
 		GameState.player_nodes[_player_on_tile].walk_to_point(next_tile.get_pos())
 		GameState.player_nodes[_player_on_tile].current_tile_name = next_tile.name

@@ -4,19 +4,10 @@
 [ext_resource type="Script" uid="uid://b3af3yqc5kxv4" path="res://src/buttons/change_menu_button.gd" id="2_qaxrp"]
 [ext_resource type="Script" uid="uid://ck7bswkpfc4ne" path="res://menus/roll_menu.gd" id="3_kans0"]
 
-[node name="DoNextMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1_j6bew")
+[node name="DoNextMenu" type="Node"]
 
 [node name="DoNextMenu" type="VBoxContainer" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -29,7 +20,7 @@ mouse_filter = 2
 theme = ExtResource("1_j6bew")
 alignment = 1
 
-[node name="Button" type="Button" parent="DoNextMenu" node_paths=PackedStringArray("hide_menu", "show_menu")]
+[node name="Roll" type="Button" parent="DoNextMenu" node_paths=PackedStringArray("hide_menu", "show_menu")]
 layout_mode = 2
 focus_mode = 0
 text = "🎲 Roll"
@@ -37,14 +28,21 @@ script = ExtResource("2_qaxrp")
 hide_menu = NodePath("..")
 show_menu = NodePath("../../RollMenu")
 
+[node name="Map" type="Button" parent="DoNextMenu"]
+layout_mode = 2
+focus_mode = 0
+text = "Map"
+script = ExtResource("2_qaxrp")
+
 [node name="RollMenu" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_j6bew")
 script = ExtResource("3_kans0")
 
 [node name="Button" type="Button" parent="RollMenu"]

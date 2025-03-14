@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://tqjuwp22raxh"]
+
+[ext_resource type="Script" uid="uid://bs5gx36m8e06a" path="res://menus/lobby_menu/draw_canvas/draw_canvas.gd" id="1_nqqly"]
+
+[node name="DrawCanvas" type="TextureRect"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_nqqly")
