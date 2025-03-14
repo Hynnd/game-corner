@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjsvvvxp2ixda"]
+
+[ext_resource type="Script" uid="uid://crctyb41dfbqi" path="res://pencil/pencil.gd" id="1_pmwgo"]
+[ext_resource type="PackedScene" uid="uid://h24oihri0mht" path="res://pencil/pencil.glb" id="1_scyov"]
+[ext_resource type="Material" uid="uid://bsngghq2uwrlu" path="res://pencil/pencil_mat.tres" id="2_pmwgo"]
+
+[sub_resource type="Gradient" id="Gradient_u4rgo"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.757835, 0.837607, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q5st3"]
+gradient = SubResource("Gradient_u4rgo")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.6)
+metadata/_snap_enabled = true
+
+[node name="Pencil" type="Node2D"]
+script = ExtResource("1_pmwgo")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = -77.0
+offset_top = -77.0
+offset_right = 77.0
+offset_bottom = 77.0
+mouse_filter = 2
+
+[node name="BrushTexture" type="TextureRect" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_q5st3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -43.0
+offset_right = 64.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763045, 0, 1.40454)
+keep_aspect = 0
+projection = 1
+size = 4.53
+
+[node name="PencilSway" type="Node3D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.814823, -0.308945, -2.85244)
+
+[node name="PencilErase" type="Node3D" parent="SubViewportContainer/SubViewport/PencilSway"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98948, 0.403648, 0)
+
+[node name="pencil" parent="SubViewportContainer/SubViewport/PencilSway/PencilErase" instance=ExtResource("1_scyov")]
+transform = Transform3D(-2.13749e-08, -0.183024, -0.491477, 0, 0.453457, -0.19837, 0.489, -8.00025e-09, -2.14831e-08, -0.944062, -0.382986, 0)
+
+[node name="Cylinder" parent="SubViewportContainer/SubViewport/PencilSway/PencilErase/pencil" index="0"]
+material_override = ExtResource("2_pmwgo")
+
+[editable path="SubViewportContainer/SubViewport/PencilSway/PencilErase/pencil"]

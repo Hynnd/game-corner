@@ -30,13 +30,11 @@ func _ready() -> void:
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	await GameState.players_spawned
+	#await GameState.players_spawned
 	
 	for id in GameState.players.keys():
 		var node = GameState.player_nodes[id]
 		node.face_camera()
-		node.can_move = false
-		node.can_jump = false
 
 
 func _process(delta: float) -> void:

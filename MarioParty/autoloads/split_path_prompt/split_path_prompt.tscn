@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs1hmjekk2mkc"]
+
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_d45mo"]
+[ext_resource type="Script" uid="uid://dd7627h6558wy" path="res://autoloads/split_path_prompt/split_path_prompt.gd" id="2_fk5cw"]
+
+[node name="SplitPathPrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d45mo")
+script = ExtResource("2_fk5cw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -270.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="LeftButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Left"
+
+[node name="RightButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Right"

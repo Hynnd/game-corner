@@ -8,6 +8,5 @@ render_priority = 0
 next_pass = ExtResource("1_67v3j")
 shader = ExtResource("2_8i5se")
 shader_parameter/color = Color(0.84, 0.84, 0.84, 1)
-shader_parameter/shade = 0.545
+shader_parameter/shade = 0.725
 shader_parameter/shade_angles = Vector3(1.305, 2.99, 0.425)
-shader_parameter/shade_color = Color(0, 0.0480001, 0.48, 1)

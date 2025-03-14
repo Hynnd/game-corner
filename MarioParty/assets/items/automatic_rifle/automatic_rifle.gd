@@ -5,7 +5,7 @@ extends Node3D
 
 
 func _ready() -> void:
-	set_multiplayer_authority(get_parent().player_id)
+	set_multiplayer_authority(get_parent().id)
 
 
 func _process(delta: float) -> void:
@@ -26,9 +26,8 @@ func shoot() -> void:
 	if is_instance_valid(col) and col.has_method("take_damage"):
 		var atk = GameState.ATTACK_EVENT.duplicate()
 		atk.damage = 1
+		atk.owner_id = Multiplayer.id
 		col.take_damage.rpc(atk)
-		
-		
 
 
 func update_transforms() -> void:

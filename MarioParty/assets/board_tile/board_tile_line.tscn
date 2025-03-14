@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://b6rifr26yesfb"]
-
-[node name="BoardTileLine" type="Node3D"]
-top_level = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(0.27, 0.2, 1)

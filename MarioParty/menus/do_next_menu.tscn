@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_j6bew")
 
 [node name="DoNextMenu" type="VBoxContainer" parent="."]
@@ -24,6 +25,7 @@ offset_top = -17.0
 offset_right = 178.0
 offset_bottom = 17.0
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_j6bew")
 alignment = 1
 
@@ -42,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_kans0")
 
 [node name="Button" type="Button" parent="RollMenu"]

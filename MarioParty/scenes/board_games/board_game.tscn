@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://t05iqk20633f"]
+[gd_scene load_steps=16 format=3 uid="uid://t05iqk20633f"]
 
 [ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_games/board_game.gd" id="1_v8odh"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="2_02cv7"]
 [ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="2_ayvlx"]
 [ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/do_next_menu.tscn" id="3_8orke"]
+[ext_resource type="Shader" uid="uid://8vdi0lhs1wtp" path="res://shaders/toon_ground.gdshader" id="3_tyrln"]
 [ext_resource type="PackedScene" uid="uid://5dw5h0c6ke7b" path="res://assets/player/camera_controllers/board_camera.tscn" id="4_6ltim"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="6_ihyv1"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_j33e7"]
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="8_j33e7"]
-[ext_resource type="Material" uid="uid://cib3xqktcgu7n" path="res://assets/player/body_manager/mats/balloon_mat.tres" id="9_6ltim"]
+[ext_resource type="PackedScene" uid="uid://2u0go2eg88vm" path="res://assets/board_tile/board_tile_split.tscn" id="10_8vwt7"]
+[ext_resource type="PackedScene" uid="uid://cj1sa8yhvclnb" path="res://src/player_status/player_status_board.tscn" id="11_nei8j"]
 
 [sub_resource type="Gradient" id="Gradient_8orke"]
 interpolation_mode = 1
@@ -24,11 +26,14 @@ seamless = true
 color_ramp = SubResource("Gradient_8orke")
 noise = SubResource("FastNoiseLite_v8odh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8orke"]
-albedo_texture = SubResource("NoiseTexture2D_02cv7")
-uv1_scale = Vector3(0.025, 0.025, 0.025)
-uv1_triplanar = true
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vwt7"]
+render_priority = 0
+shader = ExtResource("3_tyrln")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_02cv7")
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.02, 0.02, 0.02)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [node name="BoardGame" type="Node"]
 script = ExtResource("1_v8odh")
@@ -43,8 +48,9 @@ environment = ExtResource("2_02cv7")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
-size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_8orke")
+size = Vector3(193.236, 1, 236.899)
+material = SubResource("ShaderMaterial_8vwt7")
+metadata/_edit_lock_ = true
 
 [node name="BoardTile" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
@@ -56,15 +62,99 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 next_tiles = [NodePath("../BoardTile3")]
 
 [node name="BoardTile3" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
-next_tiles = [NodePath("../BoardTile4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+next_tiles = [NodePath("../BoardTileSplit")]
+
+[node name="BoardTile24" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
+next_tiles = [NodePath("../BoardTile25")]
+
+[node name="BoardTile25" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 7)
+next_tiles = [NodePath("../BoardTile26")]
+
+[node name="BoardTile26" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 7)
+next_tiles = [NodePath("../BoardTile8")]
 
 [node name="BoardTile4" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -2)
 next_tiles = [NodePath("../BoardTile5")]
 
 [node name="BoardTile5" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -6)
+next_tiles = [NodePath("../BoardTile6")]
+
+[node name="BoardTile6" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -6)
+next_tiles = [NodePath("../BoardTile7")]
+
+[node name="BoardTile7" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 0)
+next_tiles = [NodePath("../BoardTile8")]
+
+[node name="BoardTile8" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, 7)
+next_tiles = [NodePath("../BoardTile9")]
+
+[node name="BoardTile9" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 13)
+next_tiles = [NodePath("../BoardTile10")]
+
+[node name="BoardTile10" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 14)
+next_tiles = [NodePath("../BoardTile11")]
+
+[node name="BoardTile11" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 10)
+next_tiles = [NodePath("../BoardTile12")]
+
+[node name="BoardTile12" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 2)
+next_tiles = [NodePath("../BoardTile13")]
+
+[node name="BoardTile13" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -3)
+next_tiles = [NodePath("../BoardTile14")]
+
+[node name="BoardTile14" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -10)
+next_tiles = [NodePath("../BoardTile15")]
+
+[node name="BoardTile15" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -13)
+next_tiles = [NodePath("../BoardTile16")]
+
+[node name="BoardTile16" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -17)
+next_tiles = [NodePath("../BoardTile17")]
+
+[node name="BoardTile17" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -19)
+next_tiles = [NodePath("../BoardTile18")]
+
+[node name="BoardTile18" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -16)
+next_tiles = [NodePath("../BoardTile19")]
+
+[node name="BoardTile19" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -18)
+next_tiles = [NodePath("../BoardTile20")]
+
+[node name="BoardTile20" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -14)
+next_tiles = [NodePath("../BoardTile21")]
+
+[node name="BoardTile21" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -15)
+next_tiles = [NodePath("../BoardTile22")]
+
+[node name="BoardTile22" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -10)
+next_tiles = [NodePath("../BoardTile23")]
+
+[node name="BoardTile23" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("2_ayvlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 next_tiles = [NodePath("../BoardTile")]
 
 [node name="DoNextMenu" parent="." instance=ExtResource("3_8orke")]
@@ -113,12 +203,8 @@ grow_vertical = 0
 theme = ExtResource("8_j33e7")
 text = "Start Minigame*"
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(0.500091, 0, 0, 0, 0.500091, 0, 0, 0, 0.500091, -13.1372, 6.69215, -0.0144968)
-radius = 6.73278
-material = ExtResource("9_6ltim")
+[node name="BoardTileSplit" parent="." node_paths=PackedStringArray("next_tiles") instance=ExtResource("10_8vwt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+next_tiles = [NodePath("../BoardTile4"), NodePath("../BoardTile24")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0528, 9.02163, 2.29329)
-light_energy = 30.16
-omni_range = 17.085
+[node name="PlayerStatusBoard" parent="." instance=ExtResource("11_nei8j")]

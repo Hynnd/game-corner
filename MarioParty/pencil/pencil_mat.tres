@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bsngghq2uwrlu"]
+
+[ext_resource type="Shader" uid="uid://c7eh3jnoq2wfx" path="res://shaders/toon.gdshader" id="1_4mvyw"]
+[ext_resource type="Material" uid="uid://cnsln5fp7upms" path="res://shaders/mats/default_outline.tres" id="1_707qo"]
+
+[sub_resource type="Gradient" id="Gradient_4mvyw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0648968, 0.171091, 0.516224, 0.672566)
+colors = PackedColorArray(0.108433, 0.11954, 0.210938, 1, 0.851563, 0.851563, 0.851563, 1, 0.705882, 0.450771, 0.0441176, 1, 0.22289, 0.245721, 0.433594, 1, 1, 0.248009, 0.300278, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_707qo"]
+gradient = SubResource("Gradient_4mvyw")
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_707qo")
+shader = ExtResource("1_4mvyw")
+shader_parameter/tex = SubResource("GradientTexture1D_707qo")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/shade = 0.66
+shader_parameter/shade_angles = Vector3(0.3, 1.79, 0.4)
+shader_parameter/wobble_amp = 1.0

@@ -1,57 +1,63 @@
 extends Node
 
-var target_points:Array[Vector2] = []
-var move_speed:float
+var target_point:Vector2 = Vector2.INF
+var move_speed:float = 12
 
 @onready var _marker: MeshInstance3D = $TargetPointMarker
+@onready var moves_num: Label3D = %MovesNum
 
 var current_moves:int = 0
 var moving:bool = false
 
 
 func _physics_process(delta: float) -> void:
-	if target_points.size() > 0:
-		var point = target_points[0]
+	if target_point.is_finite():
 		var pos_2d = Swizzler.xz(owner.global_position)
-		pos_2d = pos_2d.move_toward(point, move_speed * delta)
+		pos_2d = pos_2d.move_toward(target_point, move_speed * delta)
 		
-		var dir = (point - Swizzler.xz(owner.global_position)).normalized()
+		var dir = (target_point - Swizzler.xz(owner.global_position)).normalized()
 		owner.velocity.x = (dir * move_speed).x
 		owner.velocity.z = (dir * move_speed).y
 		owner.movement_normal.move_input = dir 
 		
-		if pos_2d.distance_to(point) < 0.1: 
-			target_points.remove_at(0)
+		if pos_2d.distance_to(target_point) < 0.1: 
+			target_point = Vector2.INF
 			owner.velocity *= 0
 			owner.movement_normal.move_input *= 0
 		
-		_marker.position = Vector3(point.x, owner.global_position.y, point.y)
+		_marker.position = Vector3(target_point.x, owner.global_position.y, target_point.y)
 	
 	_tile_moving()
 	
-	#_marker.visible = target_points.size() > 0
+	moves_num.text = str(current_moves+1)
+	#moves_num.visible = moving
+	moves_num.visible = current_moves > 0
 
 
 
 func _tile_moving():
-	if current_moves > 0 and target_points.size() == 0:
-		moving = true
-		
+	if moving and current_moves > 0 and not target_point.is_finite():
 		var tile = GameState.find_tile(owner.current_tile_name)
 		if tile.has_method("on_player_passed"):
-			tile.on_player_passed(owner.player_id)
+			tile.on_player_passed(owner.id)
 		
-		var next_tile = GameState.find_tile(owner.current_tile_name).next_tiles[0]
-		owner.walk_to_point(next_tile.get_pos(), 12)
-		owner.current_tile_name = next_tile.name
-		
-		current_moves -= 1
-	if moving and current_moves == 0 and target_points.size() == 0:
+		#if current_moves == 0:
+			#if tile.has_method("on_player_stopped"):
+				#tile.on_player_stopped(owner.id)
+			#GameState.finished_walking.emit()
+	
+	#if moving and current_moves > 0 and target_points.size() == 0:
+		#var next_tile = GameState.find_tile(owner.current_tile_name).next_tiles[0]
+		#owner.walk_to_point(next_tile.get_pos())
+		#owner.current_tile_name = next_tile.name
+		#current_moves -= 1
+	
+	if moving and current_moves == 0 and not target_point.is_finite():
 		moving = false
 		owner.face_camera()
 		
 		var tile = GameState.find_tile(owner.current_tile_name)
 		if tile.has_method("on_player_stopped"):
-			tile.on_player_stopped(owner.player_id)
+			tile.on_player_stopped(owner.id)
 		
 		GameState.finished_walking.emit()

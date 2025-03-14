@@ -1,20 +1,10 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://be4hentnuh5p1"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://be4hentnuh5p1"]
+
+[ext_resource type="FontFile" uid="uid://cagcmrpskevde" path="res://fonts/PatrickHand-Regular.ttf" id="1_mlkpy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpelh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlkpy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlkpy"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.98, 0.4, 1)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpelh"]
 bg_color = Color(1, 1, 1, 0)
@@ -23,25 +13,41 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlkpy"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_het5a"]
-bg_color = Color(1, 0.98, 0.4, 0.290196)
+bg_color = Color(1, 1, 1, 0.466667)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(1, 0.980392, 0.4, 1)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkf7m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
 
 [resource]
-Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
@@ -52,8 +58,11 @@ Button/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/icon_normal_color = Color(0, 0, 0, 1)
 Button/colors/icon_pressed_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_mlkpy")
 Button/styles/disabled = SubResource("StyleBoxEmpty_mpelh")
 Button/styles/focus = SubResource("StyleBoxEmpty_mlkpy")
-Button/styles/hover = SubResource("StyleBoxFlat_mlkpy")
-Button/styles/normal = SubResource("StyleBoxFlat_mpelh")
+Button/styles/hover = SubResource("StyleBoxFlat_mpelh")
+Button/styles/normal = SubResource("StyleBoxFlat_mlkpy")
 Button/styles/pressed = SubResource("StyleBoxFlat_het5a")
+Label/fonts/font = ExtResource("1_mlkpy")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_lkf7m")

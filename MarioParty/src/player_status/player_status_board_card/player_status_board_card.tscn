@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5x28c55l7j5b"]
+
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_b28pn"]
+[ext_resource type="Script" uid="uid://303pch3xs044" path="res://src/player_status/player_status_minigame_card/player_status_minigame_card.gd" id="2_nrmkp"]
+
+[node name="PlayerStatusBoardCard" type="PanelContainer"]
+custom_minimum_size = Vector2(55, 80)
+offset_right = 65.0
+offset_bottom = 92.0
+size_flags_vertical = 8
+theme = ExtResource("1_b28pn")
+script = ExtResource("2_nrmkp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1

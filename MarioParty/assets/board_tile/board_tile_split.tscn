@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://2u0go2eg88vm"]
+
+[ext_resource type="Script" uid="uid://bf0o5rh4x64ah" path="res://assets/board_tile/board_tile_split.gd" id="1_g4ioh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vul3s"]
+albedo_color = Color(0.746094, 0.746094, 0.746094, 1)
+
+[node name="BoardTileSplit" type="Node3D" groups=["board_tile"]]
+script = ExtResource("1_g4ioh")
+is_start = null
+consume_move = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.85
+height = 0.25
+sides = 16
+material = SubResource("StandardMaterial3D_vul3s")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
+operation = 2
+radius = 0.638184
+height = 0.25
+sides = 16
+material = SubResource("StandardMaterial3D_vul3s")

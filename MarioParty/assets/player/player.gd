@@ -1,14 +1,14 @@
 class_name Player extends CharacterBody3D
 
-var player_id:int = 0
+var id:int = 0
 
 var current_tile_name:String:
 	get:
-		if GameState.player_tiles.has(player_id):
-			return GameState.player_tiles[player_id]
+		if GameState.player_tiles.has(id):
+			return GameState.player_tiles[id]
 		return ""
 	set(value):
-		GameState.player_tiles[player_id] = value
+		GameState.player_tiles[id] = value
 
 enum MoveMode { NORMAL, SIDE } 
 
@@ -30,11 +30,11 @@ enum MoveMode { NORMAL, SIDE }
 
 
 func _enter_tree() -> void:
-	GameState.player_nodes[player_id] = self
+	GameState.player_nodes[id] = self
 
 
 func _ready() -> void:
-	set_multiplayer_authority(player_id)
+	set_multiplayer_authority(id)
 	
 	if move_mode == MoveMode.SIDE:
 		axis_lock_linear_z = true
@@ -51,15 +51,20 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	%DebugLabel.text = ""
-	%DebugLabel.text += str("ID: ", player_id, "\n")
+	%DebugLabel.text += str("ID: ", id, "\n")
 	
 	$MultiplayerSynchronizer.public_visibility = can_move
+	
+	if Input.is_action_just_pressed("activate_move"):
+		can_move = true
+		can_jump = true
 
 
-func walk_to_point(_point:Vector2, _speed:float) -> void:
-	movement_board.target_points.clear()
-	movement_board.target_points.append(_point)
-	movement_board.move_speed = _speed
+func walk_to_point(_point:Vector2, _speed:float = -1) -> void:
+	movement_board.target_point = _point
+	movement_board.moving = true
+	if _speed != -1:
+		movement_board.move_speed = _speed
 	can_move = false
 	can_jump = false
 
@@ -72,14 +77,12 @@ func face_camera():
 
 
 func is_owner() -> bool:
-	return player_id == multiplayer.get_unique_id()
+	return id == multiplayer.get_unique_id()
 
 
 @rpc("any_peer", "call_local", "reliable")
 func take_damage(atk:Dictionary):
-	if atk.owner_id == player_id: return
+	if atk.owner_id == id: return
 	
 	health.damage(atk.damage)
 	velocity += atk.knockback
-	
-	global_position = GameState.player_spawner.get_random_point()

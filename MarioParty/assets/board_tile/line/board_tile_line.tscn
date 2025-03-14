@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b6rifr26yesfb"]
+
+[node name="BoardTileLine" type="Node3D"]
+top_level = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.27, 0.2, 1)
+
+[node name="Arrow" type="Node3D" parent="."]
+transform = Transform3D(0.648664, 0, 0, 0, 0.648664, 0, 0, 0, 0.648664, 0, 0, 0)
+top_level = true
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Arrow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.292522)
+polygon = PackedVector2Array(-0.5, 0, 0.5, 0, 0, -0.8)
+depth = 0.2

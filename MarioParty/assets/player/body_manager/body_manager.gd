@@ -29,7 +29,7 @@ var t1:Tween
 
 func _ready() -> void:
 	var mat = meshes[0].material_override.duplicate()
-	mat.set_shader_parameter("color", GameState.players[owner.player_id].color)
+	mat.set_shader_parameter("color", GameState.players[owner.id].color)
 	for node in meshes:
 		node.material_override = mat
 

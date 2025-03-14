@@ -69,9 +69,17 @@ unique_name_in_owner = true
 [node name="DebugLabel" type="Label3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1.12483, 0, 0, 0, 1.12483, 0, 0, 0, 1.12483, 0, 2.14868, 0)
+visible = false
 pixel_size = 0.01
 billboard = 1
 text = "321321"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_toylo")
+
+[node name="MovesNum" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74902, 0)
+pixel_size = 0.032
+billboard = 1
+text = "e"

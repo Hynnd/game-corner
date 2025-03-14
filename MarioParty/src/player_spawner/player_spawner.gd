@@ -36,7 +36,7 @@ func _ready() -> void:
 		new_player.global_position = point.global_position
 		if not player_collision:
 			new_player.collision_mask -= 2
-		new_player.player_id = id
+		new_player.id = id
 		new_player.can_jump = can_jump
 		new_player.can_move = can_move
 		new_player.move_mode = move_mode

@@ -35,6 +35,11 @@ func find_tile(tile_name:String) -> Node3D:
 
 
 @rpc("any_peer", "call_local", "reliable")
+func to_winner_screen() -> void:
+	get_tree().change_scene_to_file("res://scenes/win_screen/win_screen.tscn")
+
+
+@rpc("any_peer", "call_local", "reliable")
 func return_to_board() -> void:
 	get_tree().change_scene_to_file("res://scenes/board_games/board_game.tscn")
 

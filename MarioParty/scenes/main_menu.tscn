@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://delsxx63xdome"]
+[gd_scene load_steps=9 format=3 uid="uid://delsxx63xdome"]
 
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://b3af3yqc5kxv4" path="res://src/buttons/change_menu_button.gd" id="2_bqqt6"]
 [ext_resource type="Script" uid="uid://b71mhbcar47c7" path="res://src/buttons/quit_button.gd" id="2_ekxnf"]
+[ext_resource type="Shader" uid="uid://hwftwut33lfp" path="res://shaders/scrolling_pattern.gdshader" id="2_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://bjfmvmtdxox14" path="res://background.png" id="3_oa1go"]
 [ext_resource type="PackedScene" uid="uid://cpptdklow201v" path="res://menus/join_host_menu/join_host_menu.tscn" id="4_8ln24"]
 [ext_resource type="PackedScene" uid="uid://cnmc5qtkwrpxd" path="res://menus/lobby_menu/lobby_menu.tscn" id="5_8ln24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oa1go"]
+shader = ExtResource("2_rtw2f")
+shader_parameter/tex = ExtResource("3_oa1go")
+shader_parameter/velocity = Vector2(0.275, 0.31)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,6 +21,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_l6cm7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oa1go")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.498039, 0.74902)
 
 [node name="MainMenu" type="Control" parent="."]
 visible = false

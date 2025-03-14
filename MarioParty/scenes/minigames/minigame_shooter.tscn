@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/items/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_fnrs8"]
 [ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="8_06vtn"]
-[ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_minigame_status/player_minigame_status.tscn" id="9_jntm7"]
+[ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_status/player_status_minigame.tscn" id="9_jntm7"]
 
 [node name="MinigameShooter" type="Node"]
 script = ExtResource("1_6atcb")
