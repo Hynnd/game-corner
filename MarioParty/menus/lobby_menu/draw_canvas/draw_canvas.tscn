@@ -5,4 +5,5 @@
 [node name="DrawCanvas" type="TextureRect"]
 size_flags_horizontal = 0
 size_flags_vertical = 0
+expand_mode = 1
 script = ExtResource("1_nqqly")

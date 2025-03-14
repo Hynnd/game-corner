@@ -1,6 +1,6 @@
 class_name Pencil extends Node2D
 
-const SIZE_MIN:int = 6
+const SIZE_MIN:int = 9
 const SIZE_MAX:int = 33
 const SIZE_STEP:int = 3
 
@@ -29,6 +29,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	visible = on_canvas
+	
+	if not on_canvas: return
+	
 	position = get_global_mouse_position()
 	
 	velocity = (position - _old_pos) / delta
@@ -57,7 +61,6 @@ func _process(delta: float) -> void:
 				_erase_rot_tar = 0
 				)
 	
-	visible = on_canvas
 	
 	_old_pos = position
 

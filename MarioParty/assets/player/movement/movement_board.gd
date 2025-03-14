@@ -8,6 +8,7 @@ var move_speed:float = 12
 
 var current_moves:int = 0
 var moving:bool = false
+var display_num:bool = true
 
 
 func _physics_process(delta: float) -> void:
@@ -32,8 +33,7 @@ func _physics_process(delta: float) -> void:
 	_tile_moving()
 	
 	moves_num.text = str(current_moves+1)
-	#moves_num.visible = moving
-	moves_num.visible = current_moves > 0 or moving
+	moves_num.visible = display_num and (current_moves > 0 or moving)
 
 
 
@@ -41,7 +41,7 @@ func _tile_moving():
 	# Pass tile
 	if moving and current_moves > 0 and not target_point.is_finite():
 		var tile = GameState.find_tile(owner.current_tile_name)
-		if tile.has_method("on_player_passed"):
+		if is_instance_valid(tile) and tile.has_method("on_player_passed"):
 			tile.on_player_passed(owner.id)
 	
 	# Finish moving
@@ -50,7 +50,7 @@ func _tile_moving():
 		owner.face_camera()
 		
 		var tile = GameState.find_tile(owner.current_tile_name)
-		if tile.has_method("on_player_stopped"):
+		if is_instance_valid(tile) and tile.has_method("on_player_stopped"):
 			tile.on_player_stopped(owner.id)
 		
 		GameState.finished_walking.emit()

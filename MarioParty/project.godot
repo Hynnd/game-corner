@@ -59,6 +59,10 @@ import/blender/enabled=false
 board_tile=""
 player=""
 
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+
 [input]
 
 move_forward={

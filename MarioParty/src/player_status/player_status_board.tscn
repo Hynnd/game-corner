@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cj1sa8yhvclnb"]
 
-[ext_resource type="Script" uid="uid://cxkeqpnadmvcq" path="res://src/player_status/player_status_minigame.gd" id="1_b1oyg"]
+[ext_resource type="Script" uid="uid://7lhosc2luryn" path="res://src/player_status/player_status_board.gd" id="1_fkua4"]
 
 [node name="PlayerStatusBoard" type="Node"]
-script = ExtResource("1_b1oyg")
+script = ExtResource("1_fkua4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 2

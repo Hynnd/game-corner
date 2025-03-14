@@ -7,11 +7,11 @@ func _ready() -> void:
 		player.health.died.connect(func():
 			var coin = preload("res://assets/coin/coin.tscn").instantiate()
 			coin.global_position = player.global_position
-			
+			coin.linear_velocity.y = 5
 			player.global_position = GameState.player_spawner.get_random_point()
+			player.health.revive()
 			
-			await get_tree().create_timer(0.5).timeout
-			
+			await get_tree().create_timer(0.2).timeout
 			add_child(coin)
 			)
 

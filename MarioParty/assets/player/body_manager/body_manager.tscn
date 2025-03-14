@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmlw8tod4g8c8" path="res://assets/player/body_manager/body_manager.gd" id="1_u2pqc"]
 [ext_resource type="Script" uid="uid://chmscgicdmmmp" path="res://assets/player/body_manager/other/chest.gd" id="2_h0qb2"]
 [ext_resource type="Script" uid="uid://bml74jl5pkxmq" path="res://assets/player/body_manager/other/foot.gd" id="3_i43vc"]
-[ext_resource type="Texture2D" uid="uid://bi7rfxbxuqiuc" path="res://assets/player/body_manager/faces/smile_2.png" id="4_sv3f5"]
+[ext_resource type="Texture2D" uid="uid://b12f1rh6sjdvc" path="res://assets/player/body_manager/faces/smile_5.png" id="4_sv3f5"]
 [ext_resource type="Material" uid="uid://cib3xqktcgu7n" path="res://assets/player/body_manager/mats/balloon_mat.tres" id="5_2pejf"]
 [ext_resource type="Material" uid="uid://bg5y6ue5p2sfy" path="res://assets/player/body_manager/mats/body_mat.tres" id="7_nr3sf"]
 
@@ -218,8 +218,8 @@ skeleton = NodePath("")
 
 [node name="Decal" type="Decal" parent="Chest/Head/Head"]
 unique_name_in_owner = true
-transform = Transform3D(-0.851743, -3.25483e-15, 7.44617e-08, -7.44617e-08, 3.72309e-08, -0.851743, 0, -0.851743, -3.72309e-08, 1.1101e-15, 1.40491, -0.715716)
-size = Vector3(2, 0.814941, 2)
+transform = Transform3D(-0.851743, -3.25483e-15, 7.44617e-08, -7.44617e-08, 3.72309e-08, -0.851743, 0, -0.851743, -3.72309e-08, 1.71312e-15, 1.40491, -0.557914)
+size = Vector3(2, 1.42183, 2)
 texture_albedo = ExtResource("4_sv3f5")
 upper_fade = 1e-05
 lower_fade = 2.3338e-05

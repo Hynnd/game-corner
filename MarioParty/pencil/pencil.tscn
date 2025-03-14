@@ -63,7 +63,7 @@ size = 4.53
 
 [node name="PencilSway" type="Node3D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.814823, -0.308945, -2.85244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.159, -2.852)
 
 [node name="PencilErase" type="Node3D" parent="SubViewportContainer/SubViewport/PencilSway"]
 unique_name_in_owner = true

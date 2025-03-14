@@ -24,7 +24,7 @@ var current_id:int = -1 # ID
 var player_tiles:Dictionary[int, String] = {} # ID, Tile name
 var player_nodes:Dictionary[int, Node3D] = {} # ID, Node3D
 var start_tile:Node3D
-var player_spawner:Node3D
+var player_spawner:Node
 
 
 func find_tile(tile_name:String) -> Node3D:

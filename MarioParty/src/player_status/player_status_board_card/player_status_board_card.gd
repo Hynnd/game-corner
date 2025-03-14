@@ -7,11 +7,12 @@ var id:int
 
 
 func _ready() -> void:
-	if Multiplayer.id == id:
-		custom_minimum_size.x += 30
-		custom_minimum_size.y += 30
+	#if Multiplayer.id == id:
+		#custom_minimum_size.x += 30
+		#custom_minimum_size.y += 30
+	%You.visible = Multiplayer.id == id
 
 
 func _process(delta: float) -> void:
 	color_rect.color = GameState.players[id].color
-	label.text = str(GameState.players[id].minigame_coins)
+	label.text = str(GameState.players[id].coins)

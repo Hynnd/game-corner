@@ -4,13 +4,20 @@
 [ext_resource type="Script" uid="uid://djof12eiya5b7" path="res://scenes/win_screen/winner_screen_panel/winner_screen_panel.gd" id="1_wdicm"]
 
 [node name="WinnerScreenPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(131, 157)
+custom_minimum_size = Vector2(131, 108)
 size_flags_vertical = 8
 theme = ExtResource("1_16yeb")
 script = ExtResource("1_wdicm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="You" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(You)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -22,5 +29,6 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -14,6 +14,13 @@ script = ExtResource("2_jh3he")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="You" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(You)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(45, 45)
@@ -24,5 +31,7 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1

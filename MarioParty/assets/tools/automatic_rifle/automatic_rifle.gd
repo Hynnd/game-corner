@@ -28,6 +28,7 @@ func shoot() -> void:
 		atk.damage = 1
 		atk.owner_id = Multiplayer.id
 		col.take_damage.rpc(atk)
+		print(1)
 
 
 func update_transforms() -> void:

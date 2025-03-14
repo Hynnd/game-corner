@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody3D
+extends CharacterBody3D
 
 var id:int = 0
 
@@ -10,9 +10,6 @@ var current_tile_name:String:
 	set(value):
 		GameState.player_tiles[id] = value
 
-enum MoveMode { NORMAL, SIDE } 
-
-@export var move_mode := MoveMode.NORMAL
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export_group("Stats")
@@ -35,9 +32,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	set_multiplayer_authority(id)
-	
-	if move_mode == MoveMode.SIDE:
-		axis_lock_linear_z = true
 	
 	await get_tree().current_scene.ready
 	
@@ -88,3 +82,4 @@ func take_damage(atk:Dictionary):
 	
 	health.damage(atk.damage)
 	velocity += atk.knockback
+	print(2)

@@ -5,10 +5,11 @@ extends Node3D
 
 
 func _ready() -> void:
-	if Multiplayer.id == 1:
-		area.body_entered.connect(func(body: Node3D):
+	#if Multiplayer.id == 1:
+	area.body_entered.connect(func(body: Node3D):
+		if body.id == Multiplayer.id:
 			_picked_up.rpc(body.id)
-			)
+		)
 
 
 @rpc("any_peer", "call_local", "reliable")

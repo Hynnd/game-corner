@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 ## Pick spawn position randomly
 @export var pick_random:bool = false
@@ -6,13 +6,15 @@ extends Node3D
 
 @export_group("Player Parameters")
 @export var sync_movement:bool = true
-@export var move_mode := Player.MoveMode.NORMAL
+@export var lock_z_axis:bool = false
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export var player_collision:bool = true
 @export var MOVE_SPEED:float = 6
 @export var JUMP_FORCE:float = 8
 @export var GRAVITY:float = 22
+
+@onready var points:Array = get_children()
 
 
 func _enter_tree() -> void:
@@ -26,7 +28,6 @@ func _ready() -> void:
 		var index:int = GameState.players[id].index
 		ordered_ids[index] = id
 	
-	var points = get_children()
 	for i in ordered_ids.size():
 		var point = points[i]
 		if pick_random: point = points.pick_random()
@@ -39,7 +40,7 @@ func _ready() -> void:
 		new_player.id = id
 		new_player.can_jump = can_jump
 		new_player.can_move = can_move
-		new_player.move_mode = move_mode
+		new_player.axis_lock_linear_z = lock_z_axis
 		add_child(new_player)
 		
 		if is_instance_valid(item):
@@ -53,4 +54,4 @@ func _ready() -> void:
 
 
 func get_random_point() -> Vector3:
-	return get_children().pick_random().global_position
+	return points.pick_random().global_position
