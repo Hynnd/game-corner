@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://u8om2hftbm76" path="res://scenes/minigames/minigame.gd" id="1_6atcb"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="2_77fas"]
 [ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/_placeholder_mat.tres" id="3_gn6q1"]
-[ext_resource type="PackedScene" uid="uid://bhmo0g70axa82" path="res://assets/player/camera_controllers/first_person_camera.tscn" id="4_em6lj"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="5_x2u4r"]
 [ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/tools/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_fnrs8"]
 [ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="8_06vtn"]
+[ext_resource type="PackedScene" uid="uid://c6sccviksfv3a" path="res://assets/player/camera_controllers/player_camera.tscn" id="9_6atcb"]
 [ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_status/player_status_minigame.tscn" id="9_jntm7"]
 
 [node name="MinigameShooter" type="Node"]
@@ -92,8 +92,6 @@ use_collision = true
 size = Vector3(6, 3, 6)
 material = ExtResource("3_gn6q1")
 
-[node name="FirstPersonCamera" parent="." instance=ExtResource("4_em6lj")]
-
 [node name="PlayerSpawner" type="Node" parent="."]
 script = ExtResource("5_x2u4r")
 pick_random = true
@@ -138,3 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
 round_time = 3600.0
 
 [node name="PlayerMinigameStatus" parent="." instance=ExtResource("9_jntm7")]
+
+[node name="PlayerCamera" parent="." instance=ExtResource("9_6atcb")]
+first_person = true
+distance = 0.0

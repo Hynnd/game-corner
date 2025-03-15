@@ -10,3 +10,4 @@ shader = ExtResource("2_8i5se")
 shader_parameter/color = Color(0.84, 0.84, 0.84, 1)
 shader_parameter/shade = 0.725
 shader_parameter/shade_angles = Vector3(1.305, 2.99, 0.425)
+shader_parameter/wobble_amp = 1.0

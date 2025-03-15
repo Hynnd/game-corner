@@ -13,9 +13,6 @@ var current_tile_name:String:
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export_group("Stats")
-@export var MOVE_SPEED:float = 6
-@export var JUMP_FORCE:float = 8
-@export var GRAVITY:float = 22
 
 @onready var movement_normal: Node = %MovementNormal
 @onready var movement_board: Node = %MovementBoard

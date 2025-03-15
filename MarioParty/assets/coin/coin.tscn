@@ -7,6 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_tcyik"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kbag1"]
+radius = 0.32235
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mmkhw"]
 render_priority = 0

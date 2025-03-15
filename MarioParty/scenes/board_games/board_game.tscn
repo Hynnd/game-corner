@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://scenes/board_games/board_game.gd" id="1_v8odh"]
 [ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="2_02cv7"]
 [ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="2_ayvlx"]
-[ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/do_next_menu.tscn" id="3_8orke"]
+[ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/board_ui.tscn" id="3_8orke"]
 [ext_resource type="Shader" uid="uid://8vdi0lhs1wtp" path="res://shaders/toon_ground.gdshader" id="3_tyrln"]
 [ext_resource type="PackedScene" uid="uid://5dw5h0c6ke7b" path="res://assets/player/camera_controllers/board_camera.tscn" id="4_6ltim"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="6_ihyv1"]
@@ -162,7 +162,7 @@ next_tile = NodePath("../BoardTile23")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
 next_tile = NodePath("../BoardTile")
 
-[node name="DoNextMenu" parent="." instance=ExtResource("3_8orke")]
+[node name="BoardUI" parent="." instance=ExtResource("3_8orke")]
 unique_name_in_owner = true
 
 [node name="Label" type="Label" parent="."]

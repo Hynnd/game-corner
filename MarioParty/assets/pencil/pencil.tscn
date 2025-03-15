@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjsvvvxp2ixda"]
 
-[ext_resource type="Script" uid="uid://crctyb41dfbqi" path="res://pencil/pencil.gd" id="1_pmwgo"]
-[ext_resource type="PackedScene" uid="uid://h24oihri0mht" path="res://pencil/pencil.glb" id="1_scyov"]
-[ext_resource type="Material" uid="uid://bsngghq2uwrlu" path="res://pencil/pencil_mat.tres" id="2_pmwgo"]
+[ext_resource type="Script" uid="uid://crctyb41dfbqi" path="res://assets/pencil/pencil.gd" id="1_pmwgo"]
+[ext_resource type="PackedScene" uid="uid://h24oihri0mht" path="res://assets/pencil/pencil.glb" id="1_scyov"]
+[ext_resource type="Material" uid="uid://bsngghq2uwrlu" path="res://assets/pencil/pencil_mat.tres" id="2_pmwgo"]
 
 [sub_resource type="Gradient" id="Gradient_u4rgo"]
 interpolation_mode = 1

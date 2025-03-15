@@ -5,14 +5,14 @@ extends Node
 @export var item:PackedScene
 
 @export_group("Player Parameters")
-@export var sync_movement:bool = true
+#@export var sync_movement:bool = true
 @export var lock_z_axis:bool = false
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export var player_collision:bool = true
-@export var MOVE_SPEED:float = 6
-@export var JUMP_FORCE:float = 8
-@export var GRAVITY:float = 22
+@export var move_speed:float = 6
+@export var jump_force:float = 8
+@export var gravity:float = 22
 
 @onready var points:Array = get_children()
 
@@ -42,6 +42,9 @@ func _ready() -> void:
 		new_player.can_move = can_move
 		new_player.axis_lock_linear_z = lock_z_axis
 		add_child(new_player)
+		new_player.movement_normal.jump_force = jump_force
+		new_player.movement_normal.gravity = gravity
+		new_player.movement_normal.move_speed = move_speed
 		
 		if is_instance_valid(item):
 			var new_item = item.instantiate()

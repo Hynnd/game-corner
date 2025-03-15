@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://tqjuwp22raxh" path="res://menus/lobby_menu/draw_canvas/draw_canvas.tscn" id="4_nh4fe"]
 [ext_resource type="PackedScene" uid="uid://1quaodva78dk" path="res://assets/player/body_manager/body_manager.tscn" id="4_qr2lo"]
 [ext_resource type="Script" uid="uid://cta4oas2sllel" path="res://menus/lobby_menu/ready_players.gd" id="5_wkj3s"]
-[ext_resource type="PackedScene" uid="uid://cjsvvvxp2ixda" path="res://pencil/pencil.tscn" id="6_x0ybd"]
+[ext_resource type="PackedScene" uid="uid://cjsvvvxp2ixda" path="res://assets/pencil/pencil.tscn" id="6_x0ybd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nh4fe"]
 

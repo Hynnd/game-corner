@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	var vel = owner.velocity
 	var move_dir = owner.movement_normal.move_dir
 	
-	if Swizzler.xz(vel).length() > owner.MOVE_SPEED * 0.465:
+	if Swizzler.xz(vel).length() > owner.movement_normal.move_speed * 0.465:
 		var ang = -Swizzler.xz(vel).angle()-PI/2
 		legs.rotation.y = lerp_angle(legs.rotation.y, ang, min(delta * 7, 1))
 		arms.rotation.y = lerp_angle(arms.rotation.y, ang, min(delta * 11, 1))
@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 	
 	
 	if owner.is_on_floor():
-		if owner.velocity.length() > owner.MOVE_SPEED * 0.465:
+		if owner.velocity.length() > owner.movement_normal.move_speed * 0.465:
 			_arms_sway += delta * 18 * _arms_raise
 	else:
 		_arms_raise = lerpf(_arms_raise, 0, min(delta*8, 1))

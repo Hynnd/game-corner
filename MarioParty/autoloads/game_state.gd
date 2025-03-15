@@ -17,6 +17,10 @@ const ATTACK_EVENT:Dictionary = {
 	"knockback": Vector3.ZERO,
 	"owner_id": -1,
 }
+const MINIGAME_POOL = [
+	"minigame_2d_race",
+	#"minigame_shooter",
+]
 
 var players:Dictionary[int, Dictionary] = {} # ID, Dict
 var current_id:int = -1 # ID
@@ -47,7 +51,9 @@ func return_to_board() -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func play_minigame() -> void:
-	get_tree().change_scene_to_file("res://scenes/minigames/minigame_shooter.tscn")
+	var file_name = MINIGAME_POOL.pick_random()
+	var path = "res://scenes/minigames/" + file_name + ".tscn"
+	get_tree().change_scene_to_file(path)
 
 
 @rpc("any_peer", "call_local", "reliable")

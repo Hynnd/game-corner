@@ -13,7 +13,7 @@ func _ready() -> void:
 		)
 	GameState.current_player_incremented.connect(func():
 		if GameState.current_id == multiplayer.get_unique_id():
-			%DoNextMenu.get_node("DoNextMenu").show()
+			%BoardUI.get_node("DoNextMenu").show()
 		)
 	%ForceStartMinigame.pressed.connect(func():
 		GameState.play_minigame.rpc()
@@ -22,7 +22,7 @@ func _ready() -> void:
 	GameState.current_id = 1
 	
 	if GameState.current_id == multiplayer.get_unique_id():
-		%DoNextMenu.get_node("DoNextMenu").show()
+		%BoardUI.get_node("DoNextMenu").show()
 	
 	if GameState.player_tiles.size() == 0:
 		for id in GameState.players.keys():

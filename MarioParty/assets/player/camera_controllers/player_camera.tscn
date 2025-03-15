@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6sccviksfv3a"]
+
+[ext_resource type="Script" uid="uid://c4mhhsjdmrs1t" path="res://assets/player/camera_controllers/player_camera.gd" id="1_jvn73"]
+
+[node name="PlayerCamera" type="Node3D"]
+script = ExtResource("1_jvn73")
+
+[node name="Orbit" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="Orbit"]
+unique_name_in_owner = true

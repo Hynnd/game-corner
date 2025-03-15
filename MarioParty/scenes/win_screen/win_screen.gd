@@ -14,8 +14,9 @@ func _ready() -> void:
 		new_status.id = id
 		container.add_child(new_status)
 	
-	for i in GameState.player_nodes.size():
+	var num_players = GameState.player_nodes.size()
+	for i in num_players:
 		var id = GameState.players.keys()[i]
 		var node = GameState.player_nodes[id]
-		node.walk_to_point(Vector2(-3 + i * 2, 0), 3)
+		node.walk_to_point(Vector2(-(num_players-1) + i * 2, 0), 3)
 		node.movement_board.display_num = false

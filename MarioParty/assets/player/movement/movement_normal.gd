@@ -3,8 +3,12 @@ extends Node
 const ACCEL:float = 12
 const DECEL:float = 9
 const ACCEL_AIR:float = 0.2
+const GRAVITY_DOWN:float = 1.05
 
-const GRAVITY_DOWN:float = 1.09
+var move_speed:float
+var jump_force:float
+var gravity:float
+
 
 var move_input:Vector2
 @export var move_dir:Vector2
@@ -25,19 +29,19 @@ func _physics_process(delta: float) -> void:
 		owner.move_and_slide()
 		return
 	
-	var accel = ACCEL if Swizzler.xz(owner.velocity).length() < owner.MOVE_SPEED * move_input.length() else DECEL
+	var accel = ACCEL if Swizzler.xz(owner.velocity).length() < move_speed * move_input.length() else DECEL
 	if owner.is_on_floor():
-		owner.velocity.x = lerpf(owner.velocity.x, move_dir.x * owner.MOVE_SPEED, delta * accel)
-		owner.velocity.z = lerpf(owner.velocity.z, move_dir.y * owner.MOVE_SPEED, delta * accel)
+		owner.velocity.x = lerpf(owner.velocity.x, move_dir.x * move_speed, delta * accel)
+		owner.velocity.z = lerpf(owner.velocity.z, move_dir.y * move_speed, delta * accel)
 	else:
 		if move_input.length() > 0:
-			owner.velocity.x = lerpf(owner.velocity.x, move_dir.x * owner.MOVE_SPEED, delta * accel * ACCEL_AIR)
-			owner.velocity.z = lerpf(owner.velocity.z, move_dir.y * owner.MOVE_SPEED, delta * accel * ACCEL_AIR)
+			owner.velocity.x = lerpf(owner.velocity.x, move_dir.x * move_speed, delta * accel * ACCEL_AIR)
+			owner.velocity.z = lerpf(owner.velocity.z, move_dir.y * move_speed, delta * accel * ACCEL_AIR)
 	
 	if owner.is_on_floor() and owner.velocity.y <= 0:
 		if Input.is_action_just_pressed("jump") and owner.is_owner():
 			if owner.can_jump:
-				owner.velocity.y = owner.JUMP_FORCE
+				owner.velocity.y = jump_force
 	else:
 		owner.velocity.y -= get_gravity() * delta
 	
@@ -47,4 +51,4 @@ func _physics_process(delta: float) -> void:
 
 
 func get_gravity() -> float:
-	return owner.GRAVITY * GRAVITY_DOWN if owner.velocity.y < 0 else owner.GRAVITY
+	return gravity * GRAVITY_DOWN if owner.velocity.y < 0 else gravity

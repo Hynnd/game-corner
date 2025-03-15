@@ -29,11 +29,14 @@ unique_name_in_owner = true
 wait_time = 0.11
 one_shot = true
 
-[node name="Visuals" type="Node3D" parent="."]
+[node name="Orbit" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Visuals" type="Node3D" parent="Orbit"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227099, -0.324342, -0.0148478)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Visuals"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Orbit/Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.478149)
 size = Vector3(0.176758, 0.304443, 1.1358)
 

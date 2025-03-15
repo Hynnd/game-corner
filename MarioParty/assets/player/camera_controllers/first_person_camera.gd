@@ -1,3 +1,5 @@
+
+
 extends Node3D
 
 @export var max_angle:float = 89
@@ -11,7 +13,7 @@ var target:Node3D
 
 
 func _ready() -> void:
-	await GameState.players_spawned
+	await get_tree().process_frame
 	
 	set_multiplayer_authority(Multiplayer.id)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -32,7 +34,8 @@ func _input(event):
 
 
 func _process(delta: float) -> void:
-	position = target.global_position
+	if is_instance_valid(target):
+		position = target.global_position
 	
 	update_head_rot.rpc(Multiplayer.id, cam.global_rotation)
 

@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var ray: RayCast3D = %RayCast3D
 @onready var cooldown: Timer = %Cooldown
+@onready var orbit: Node3D = %Orbit
 
 
 func _ready() -> void:
@@ -9,6 +10,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if not is_multiplayer_authority(): 
+		global_transform = get_parent().body_manager.head.global_transform
+		return
+	
 	if Input.is_action_pressed("left_click") and cooldown.is_stopped():
 		cooldown.start()
 		shoot()
@@ -28,7 +33,11 @@ func shoot() -> void:
 		atk.damage = 1
 		atk.owner_id = Multiplayer.id
 		col.take_damage.rpc(atk)
-		print(1)
+	
+	print(6)
+	var t = create_tween()
+	t.tween_property(orbit, "position:z", 0.23, 0.02)
+	t.tween_property(orbit, "position:z", 0, 0.08)
 
 
 func update_transforms() -> void:
