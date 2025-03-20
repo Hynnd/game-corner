@@ -79,4 +79,3 @@ func take_damage(atk:Dictionary):
 	
 	health.damage(atk.damage)
 	velocity += atk.knockback
-	print(2)

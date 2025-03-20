@@ -1,0 +1,208 @@
+[gd_scene load_steps=16 format=3 uid="uid://36ygoo2x03j"]
+
+[ext_resource type="PackedScene" uid="uid://362q31w17m0x" path="res://src/scenes/boardgame/boardgame.tscn" id="1_bkpoq"]
+[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/boardgames/board_env.tres" id="2_ikocy"]
+[ext_resource type="Shader" uid="uid://8vdi0lhs1wtp" path="res://shaders/toon_ground.gdshader" id="3_1dyjo"]
+[ext_resource type="PackedScene" uid="uid://x71e3rs52ykn" path="res://assets/board_tile/board_tile.tscn" id="4_ahpyi"]
+[ext_resource type="PackedScene" uid="uid://2u0go2eg88vm" path="res://assets/board_tile/board_tile_split.tscn" id="5_qsuso"]
+[ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/board_ui.tscn" id="6_7vkvl"]
+[ext_resource type="PackedScene" uid="uid://5dw5h0c6ke7b" path="res://assets/player/camera_controllers/board_camera.tscn" id="7_dklur"]
+[ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="8_5yk87"]
+[ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="9_8quk5"]
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="10_0t0ii"]
+[ext_resource type="PackedScene" uid="uid://cj1sa8yhvclnb" path="res://src/player_status/player_status_board.tscn" id="11_w3t42"]
+
+[sub_resource type="Gradient" id="Gradient_oi7v0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.618343)
+colors = PackedColorArray(0, 0.617188, 0.0400294, 1, 0.093, 0.93, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_86dwk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_02cv7"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_oi7v0")
+noise = SubResource("FastNoiseLite_86dwk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxo8d"]
+render_priority = 0
+shader = ExtResource("3_1dyjo")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_02cv7")
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.02, 0.02, 0.02)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="Boardgame" instance=ExtResource("1_bkpoq")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(0.892099, -0.391305, 0.225919, 1.77046e-08, 0.499998, 0.866026, -0.45184, -0.772581, 0.446048, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = ExtResource("2_ikocy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(193.236, 1, 236.899)
+material = SubResource("ShaderMaterial_cxo8d")
+metadata/_edit_lock_ = true
+
+[node name="BoardTile" parent="." index="3" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+is_start = true
+next_tile = NodePath("../BoardTile2")
+
+[node name="BoardTile2" parent="." index="4" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+next_tile = NodePath("../BoardTile3")
+
+[node name="BoardTile3" parent="." index="5" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+next_tile = NodePath("../BoardTileSplit")
+
+[node name="BoardTileSplit" parent="." index="6" node_paths=PackedStringArray("next_tile_left", "next_tile_right") instance=ExtResource("5_qsuso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+next_tile_left = NodePath("../BoardTile4")
+next_tile_right = NodePath("../BoardTile24")
+
+[node name="BoardTile24" parent="." index="7" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 5)
+next_tile = NodePath("../BoardTile25")
+
+[node name="BoardTile25" parent="." index="8" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 7)
+next_tile = NodePath("../BoardTile26")
+
+[node name="BoardTile26" parent="." index="9" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 7)
+next_tile = NodePath("../BoardTile8")
+
+[node name="BoardTile4" parent="." index="10" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -2)
+next_tile = NodePath("../BoardTile5")
+
+[node name="BoardTile5" parent="." index="11" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -6)
+next_tile = NodePath("../BoardTile6")
+
+[node name="BoardTile6" parent="." index="12" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -6)
+next_tile = NodePath("../BoardTile7")
+
+[node name="BoardTile7" parent="." index="13" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, 0)
+next_tile = NodePath("../BoardTile8")
+
+[node name="BoardTile8" parent="." index="14" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, 7)
+next_tile = NodePath("../BoardTile9")
+
+[node name="BoardTile9" parent="." index="15" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, 13)
+next_tile = NodePath("../BoardTile10")
+
+[node name="BoardTile10" parent="." index="16" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 14)
+next_tile = NodePath("../BoardTile11")
+
+[node name="BoardTile11" parent="." index="17" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 10)
+next_tile = NodePath("../BoardTile12")
+
+[node name="BoardTile12" parent="." index="18" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, 2)
+next_tile = NodePath("../BoardTile13")
+
+[node name="BoardTile13" parent="." index="19" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -3)
+next_tile = NodePath("../BoardTile14")
+
+[node name="BoardTile14" parent="." index="20" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -10)
+next_tile = NodePath("../BoardTile15")
+
+[node name="BoardTile15" parent="." index="21" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -13)
+next_tile = NodePath("../BoardTile16")
+
+[node name="BoardTile16" parent="." index="22" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -17)
+next_tile = NodePath("../BoardTile17")
+
+[node name="BoardTile17" parent="." index="23" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0, -19)
+next_tile = NodePath("../BoardTile18")
+
+[node name="BoardTile18" parent="." index="24" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -16)
+next_tile = NodePath("../BoardTile19")
+
+[node name="BoardTile19" parent="." index="25" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, -18)
+next_tile = NodePath("../BoardTile20")
+
+[node name="BoardTile20" parent="." index="26" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -14)
+next_tile = NodePath("../BoardTile21")
+
+[node name="BoardTile21" parent="." index="27" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -15)
+next_tile = NodePath("../BoardTile22")
+
+[node name="BoardTile22" parent="." index="28" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -10)
+next_tile = NodePath("../BoardTile23")
+
+[node name="BoardTile23" parent="." index="29" node_paths=PackedStringArray("next_tile") instance=ExtResource("4_ahpyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
+next_tile = NodePath("../BoardTile")
+
+[node name="Label" type="Label" parent="." index="30"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+
+[node name="BoardCamera" parent="." index="31" instance=ExtResource("7_dklur")]
+
+[node name="PlayerSpawner" type="Node" parent="." index="32"]
+script = ExtResource("8_5yk87")
+can_jump = false
+can_move = false
+player_collision = false
+
+[node name="Spawnpoint" parent="PlayerSpawner" index="0" instance=ExtResource("9_8quk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Spawnpoint2" parent="PlayerSpawner" index="1" instance=ExtResource("9_8quk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
+
+[node name="Spawnpoint3" parent="PlayerSpawner" index="2" instance=ExtResource("9_8quk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="Spawnpoint4" parent="PlayerSpawner" index="3" instance=ExtResource("9_8quk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="ForceStartMinigame" type="Button" parent="." index="33"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -59.0
+offset_right = -39.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("10_0t0ii")
+text = "Start Minigame*"
+
+[node name="PlayerStatusBoard" parent="." index="34" instance=ExtResource("11_w3t42")]
+
+[node name="BoardUI" parent="." index="35" instance=ExtResource("6_7vkvl")]

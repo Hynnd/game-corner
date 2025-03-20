@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://buf1ynlv612jx"]
+
+[ext_resource type="Script" uid="uid://pmionpnmiekk" path="res://src/grouped_particles_player.gd" id="1_k63k7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l8o5"]
+shading_mode = 0
+albedo_color = Color(0.0976563, 0.0976563, 0.0976563, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_6l8o5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6pnmr"]
+curve = SubResource("Curve_6l8o5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6pnmr"]
+spread = 28.425
+initial_velocity_min = 1.0
+initial_velocity_max = 5.2
+scale_min = 0.3
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_6pnmr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ewkn"]
+size = Vector2(0.2, 0.2)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_k63k7")
+lifetime = 2.0
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 16
+material_override = SubResource("StandardMaterial3D_6l8o5")
+cast_shadow = 0
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_6pnmr")
+draw_pass_1 = SubResource("QuadMesh_0ewkn")

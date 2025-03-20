@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbmyp0rxuywjl"]
+
+[ext_resource type="Script" uid="uid://d13cqmjejrp0e" path="res://assets/board_tile/board_tile_deposit.gd" id="1_srstv"]
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="2_2jxyl"]
+[ext_resource type="Shader" uid="uid://c7eh3jnoq2wfx" path="res://shaders/toon.gdshader" id="2_5d1b8"]
+[ext_resource type="Texture2D" uid="uid://c5bkpcvka5k8v" path="res://assets/golden_balloon/balloon_icon_large.png" id="4_1jh0y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vul3s"]
+albedo_color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jh0y"]
+render_priority = 0
+shader = ExtResource("2_5d1b8")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/shade = 0.1
+shader_parameter/shade_angles = Vector3(0.3, 1, 0.4)
+shader_parameter/wobble_amp = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jxyl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="BoardTileDeposit" type="Node3D" groups=["board_tile"]]
+script = ExtResource("1_srstv")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.85
+height = 0.25
+sides = 16
+material = SubResource("StandardMaterial3D_vul3s")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00878906, 0)
+radius = 0.785645
+height = 0.267578
+sides = 16
+material = SubResource("ShaderMaterial_1jh0y")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.04847, 0, 0, 0, 2.04847, 0, 0, 0, 2.04847, 0, 0.150013, 0.0296693)
+modulate = Color(1, 0.652269, 0, 1)
+axis = 1
+texture_filter = 0
+texture = ExtResource("4_1jh0y")
+
+[node name="Menu" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -73.5
+offset_right = 178.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2jxyl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jxyl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Pay 25 paperclips to deposit golden balloons?"
+
+[node name="YesButton" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "No"

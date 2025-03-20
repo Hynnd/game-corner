@@ -10,6 +10,7 @@ extends Node
 @export var can_jump:bool = true
 @export var can_move:bool = true
 @export var player_collision:bool = true
+@export var can_sprint:bool = false
 @export var move_speed:float = 6
 @export var jump_force:float = 8
 @export var gravity:float = 22
@@ -45,6 +46,7 @@ func _ready() -> void:
 		new_player.movement_normal.jump_force = jump_force
 		new_player.movement_normal.gravity = gravity
 		new_player.movement_normal.move_speed = move_speed
+		new_player.movement_normal.can_sprint = can_sprint
 		
 		if is_instance_valid(item):
 			var new_item = item.instantiate()

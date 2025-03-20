@@ -13,7 +13,7 @@ radius = 0.32235
 render_priority = 0
 next_pass = ExtResource("2_tkvy6")
 shader = ExtResource("3_rb5fb")
-shader_parameter/color = Color(1, 0.972549, 0.188235, 1)
+shader_parameter/color = Color(0.62, 0.62, 0.62, 1)
 shader_parameter/shade = 0.595
 shader_parameter/shade_angles = Vector3(0.3, 1, 0.4)
 shader_parameter/wobble_amp = 0.535
@@ -37,8 +37,16 @@ shape = SubResource("SphereShape3D_kbag1")
 [node name="Visuals" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="CSGBox3D" type="CSGSphere3D" parent="Visuals"]
-transform = Transform3D(0.280402, 0.540389, -0.0348741, -0.470184, 0.262444, 0.286204, 0.268634, -0.104714, 0.537339, 0, 0.511548, 0)
-instance_shader_parameters/outline_scale = 0.46
-radius = 0.33
-material = SubResource("ShaderMaterial_mmkhw")
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459955, 0)
+material_override = SubResource("ShaderMaterial_mmkhw")
+instance_shader_parameters/outline_scale = 0.375
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Visuals/CSGCombiner3D"]
+transform = Transform3D(0.0643128, 0, 0, 0, 0.447977, 0, 0, 0, 0.447977, 0, 0, 0)
+visible = false
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Visuals/CSGCombiner3D"]
+transform = Transform3D(0.519578, 0, 0, 0, 0.519578, 0, 0, 0, 0.519578, 0, -0.238503, 0)
+polygon = PackedVector2Array(0.3, 0, 0.3, 1, -0.2, 1, -0.2, 0.1, 0.1, 0.1, 0.1, 0.8, 0, 0.8, 0, 0.2, -0.1, 0.2, -0.1, 0.9, 0.2, 0.9, 0.2, 0, 0, 0, -0.3, 0, -0.3, 1.1, 0.4, 1.1, 0.4, 0)
+depth = 0.15

@@ -31,8 +31,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	visible = on_canvas
 	
-	if not on_canvas: return
-	
 	position = get_global_mouse_position()
 	
 	velocity = (position - _old_pos) / delta
@@ -41,10 +39,9 @@ func _process(delta: float) -> void:
 	_change_brush_size()
 	
 	if Input.is_action_just_pressed("right_click") or Input.is_action_just_released("right_click"):
-		if Input.is_action_just_pressed("right_click"):is_erasing = true
+		if Input.is_action_just_pressed("right_click") and on_canvas:is_erasing = true
 		if Input.is_action_just_released("right_click"):is_erasing = false
 		
-		#is_erasing = !is_erasing
 		if er_tween: er_tween.kill()
 		er_tween = create_tween().set_trans(Tween.TRANS_SINE)
 		
@@ -61,7 +58,6 @@ func _process(delta: float) -> void:
 				_erase_rot_tar = 0
 				)
 	
-	
 	_old_pos = position
 
 func _animate(delta:float):
@@ -76,12 +72,6 @@ func _animate(delta:float):
 	else: _draw_sway_progress = 0
 	
 	pencil_sway.rotation.z = lerp_angle(pencil_sway.rotation.z, tar_z, min(20*delta,1))
-	
-	#var tar_y = 0
-	#if is_drawing or is_erasing:
-		#tar_y = lerp_angle(tar_y, -3, 20 * delta)
-	#
-	#pencil_sway.rotation.y = lerp_angle(pencil_sway.rotation.y, tar_y, min(20*delta,1))
 	
 	pencil_erase.rotation.z = _erase_rot
 

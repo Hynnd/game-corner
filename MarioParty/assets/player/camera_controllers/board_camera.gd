@@ -5,6 +5,10 @@ extends Node3D
 var tween:Tween
 
 
+func _enter_tree() -> void:
+	GameState.camera_controller = self
+
+
 func _ready() -> void:
 	GameState.finished_walking.connect(func():
 		animate_camera.rpc()

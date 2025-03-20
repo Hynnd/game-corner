@@ -8,9 +8,11 @@ signal players_spawned
 const PLAYER_STATE:Dictionary = {
 	"index": -1,
 	"color": Color.WHITE,
+	"face": null,
 	"coins": 0,
 	"minigame_coins": 0,
-	"face": null,
+	"balloons": 0,
+	"unsecured_balloons": 0,
 }
 const ATTACK_EVENT:Dictionary = {
 	"damage": 0,
@@ -18,8 +20,9 @@ const ATTACK_EVENT:Dictionary = {
 	"owner_id": -1,
 }
 const MINIGAME_POOL = [
-	"minigame_2d_race",
-	#"minigame_shooter",
+	#"minigame_2d_race",
+	"minigame_shooter",
+	#"minigame_bomber",
 ]
 
 var players:Dictionary[int, Dictionary] = {} # ID, Dict
@@ -29,6 +32,7 @@ var player_tiles:Dictionary[int, String] = {} # ID, Tile name
 var player_nodes:Dictionary[int, Node3D] = {} # ID, Node3D
 var start_tile:Node3D
 var player_spawner:Node
+var camera_controller:Node3D
 
 
 func find_tile(tile_name:String) -> Node3D:
@@ -46,7 +50,10 @@ func to_winner_screen() -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func return_to_board() -> void:
-	get_tree().change_scene_to_file("res://scenes/board_games/board_game.tscn")
+	for id in players.keys():
+		players[id].coins += players[id].minigame_coins
+		players[id].minigame_coins = 0
+	get_tree().change_scene_to_file("res://scenes/boardgames/boardgame_1.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")

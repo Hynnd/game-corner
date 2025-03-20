@@ -43,7 +43,6 @@ func _ready() -> void:
 	
 	if GameState.players[player.id].face != null:
 		var image = Image.new()
-		#image.data = GameState.players[player.id].face
 		image.load_png_from_buffer(GameState.players[player.id].face)
 		decal.texture_albedo = ImageTexture.create_from_image(image)
 

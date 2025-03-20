@@ -13,6 +13,7 @@ config_version=5
 config/name="MarioParty"
 run/main_scene="uid://delsxx63xdome"
 config/features=PackedStringArray("4.4")
+run/max_fps=144
 config/icon="uid://cn1qw7678qbfb"
 
 [autoload]
@@ -21,7 +22,6 @@ GameState="*res://autoloads/game_state.gd"
 ScreenSplitter="*res://autoloads/screen_splitter.gd"
 Multiplayer="*res://autoloads/multiplayer.gd"
 Game="*res://autoloads/game.gd"
-SplitPathPrompt="*res://autoloads/split_path_prompt/split_path_prompt.tscn"
 FpsCounter="*res://autoloads/_fps_counter/_fps_counter.tscn"
 
 [debug]
@@ -40,6 +40,7 @@ window/vsync/vsync_mode=0
 [file_customization]
 
 folder_colors={
+"res://_unsorted/": "gray",
 "res://assets/": "purple",
 "res://autoloads/": "red",
 "res://fonts/": "yellow",
@@ -58,10 +59,14 @@ import/blender/enabled=false
 
 board_tile=""
 player=""
+player_camera=""
 
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 
 [input]
 
@@ -130,11 +135,18 @@ scroll_down={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
+3d_render/layer_5="VFX"
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Ragdoll"
 
 [physics]
 

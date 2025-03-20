@@ -8,7 +8,7 @@ instance uniform float outline_scale = 1.;
 
 void vertex() {
 	VERTEX += NORMAL * thickness * outline_scale;
-	
+
 	float speed = 7.;
 	if (int(floor(TIME*speed)) % 2 == 0) {
 		VERTEX.x += sin(VERTEX.y*7.)*0.05;

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci5rx76ey4vfv"]
 
-[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="1_2l6cc"]
+[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/boardgames/board_env.tres" id="1_2l6cc"]
 [ext_resource type="Script" uid="uid://dgl8irnxmo2ij" path="res://scenes/win_screen/win_screen.gd" id="1_e41g7"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="1_erk2x"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="2_2l6cc"]

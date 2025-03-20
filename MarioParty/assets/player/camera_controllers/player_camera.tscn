@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4mhhsjdmrs1t" path="res://assets/player/camera_controllers/player_camera.gd" id="1_jvn73"]
 
-[node name="PlayerCamera" type="Node3D"]
+[node name="PlayerCamera" type="Node3D" groups=["player_camera"]]
 script = ExtResource("1_jvn73")
 
 [node name="Orbit" type="Node3D" parent="."]

@@ -1,37 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://yf0b38x6f6ea"]
+[gd_scene load_steps=5 format=3 uid="uid://yf0b38x6f6ea"]
 
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_rpj2n"]
 [ext_resource type="Script" uid="uid://303pch3xs044" path="res://src/player_status/player_status_minigame_card/player_status_minigame_card.gd" id="2_jh3he"]
+[ext_resource type="PackedScene" uid="uid://drf2wem3khh0c" path="res://src/player_icon/player_icon.tscn" id="3_jfy2w"]
+[ext_resource type="Texture2D" uid="uid://bpkahh01e8ltg" path="res://assets/golden_balloon/coin_icon.png" id="4_jluke"]
 
 [node name="PlayerStatusMinigameCard" type="PanelContainer"]
-custom_minimum_size = Vector2(55, 80)
+custom_minimum_size = Vector2(55, 0)
 offset_right = 65.0
 offset_bottom = 92.0
 size_flags_vertical = 8
 theme = ExtResource("1_rpj2n")
 script = ExtResource("2_jh3he")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="You" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="You" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(You)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="PlayerIcon" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_jfy2w")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("4_jluke")
+
+[node name="Coins" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "?"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1

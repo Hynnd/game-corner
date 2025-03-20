@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d0p5qgo34b7bt"]
+
+[ext_resource type="Shader" uid="uid://cysmh5fc1yt5c" path="res://shaders/outline.gdshader" id="1_8367o"]
+[ext_resource type="Shader" uid="uid://c7eh3jnoq2wfx" path="res://shaders/toon.gdshader" id="2_tf4yp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx26h"]
+render_priority = 0
+shader = ExtResource("1_8367o")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.13
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jx26h")
+shader = ExtResource("2_tf4yp")
+shader_parameter/color = Color(1, 0.683333, 0, 1)
+shader_parameter/shade = 0.61
+shader_parameter/shade_angles = Vector3(0.625, 1, 0.76)
+shader_parameter/wobble_amp = 1.0

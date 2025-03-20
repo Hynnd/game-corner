@@ -18,6 +18,7 @@ func _input(event: InputEvent) -> void:
 
 
 func change_menu() -> void:
+	await get_tree().create_timer(0.15).timeout
 	if hide_menu:
 		hide_menu.hide()
 	if show_menu:

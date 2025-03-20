@@ -7,3 +7,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 expand_mode = 1
 script = ExtResource("1_nqqly")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.004
+one_shot = true

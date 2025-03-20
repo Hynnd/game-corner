@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2u0go2eg88vm"]
+[gd_scene load_steps=4 format=3 uid="uid://2u0go2eg88vm"]
 
 [ext_resource type="Script" uid="uid://bf0o5rh4x64ah" path="res://assets/board_tile/board_tile_split.gd" id="1_g4ioh"]
+[ext_resource type="PackedScene" uid="uid://bs1hmjekk2mkc" path="res://autoloads/split_path_prompt/split_path_prompt.tscn" id="2_s6vgk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vul3s"]
 albedo_color = Color(0.746094, 0.746094, 0.746094, 1)
@@ -20,3 +21,6 @@ radius = 0.726074
 height = 0.25
 sides = 16
 material = SubResource("StandardMaterial3D_vul3s")
+
+[node name="SplitPathPrompt" parent="." instance=ExtResource("2_s6vgk")]
+unique_name_in_owner = true

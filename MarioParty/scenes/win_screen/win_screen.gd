@@ -10,7 +10,7 @@ func _ready() -> void:
 			)
 	
 	for id in GameState.players.keys():
-		var new_status = preload("winner_screen_panel/winner_screen_panel.tscn").instantiate()
+		var new_status = preload("winner_screen_card/winner_screen_card.tscn").instantiate()
 		new_status.id = id
 		container.add_child(new_status)
 	
@@ -20,3 +20,19 @@ func _ready() -> void:
 		var node = GameState.player_nodes[id]
 		node.walk_to_point(Vector2(-(num_players-1) + i * 2, 0), 3)
 		node.movement_board.display_num = false
+	
+	for id in get_winners():
+		GameState.players[id].unsecured_balloons += 1
+
+
+func get_winners() -> Array[int]:
+	var winner_ids:Array[int] = [GameState.players.keys()[0]]
+	var highest_score:int = GameState.players[winner_ids[0]].minigame_coins
+	for next_id in GameState.players.keys():
+		var next_score = GameState.players[next_id].minigame_coins
+		if next_score > highest_score:
+			highest_score = next_score
+			winner_ids = [next_id]
+		elif next_score == highest_score:
+			winner_ids.append(next_id)
+	return winner_ids

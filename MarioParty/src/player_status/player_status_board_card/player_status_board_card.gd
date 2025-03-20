@@ -1,18 +1,38 @@
-extends PanelContainer
+extends Control
 
 var id:int
 
-@onready var color_rect: ColorRect = %ColorRect
-@onready var label: Label = %Label
+@onready var balloons: Label = %Balloons
+@onready var balloons_unsecured: Label = %BalloonsUnsecured
+@onready var coins: Label = %Coins
+@onready var unsecured_container: HBoxContainer = %UnsecuredContainer
+@onready var panel_container: PanelContainer = %PanelContainer
+@onready var outline: Panel = %Outline
 
 
 func _ready() -> void:
-	#if Multiplayer.id == id:
-		#custom_minimum_size.x += 30
-		#custom_minimum_size.y += 30
 	%You.visible = Multiplayer.id == id
+	
+	%PlayerIcon.id = id
+	%PlayerIcon._refresh()
+	
+	outline.modulate = GameState.players[id].color
+	#if id == Multiplayer.id:
+	panel_container.self_modulate = GameState.players[id].color
 
 
 func _process(delta: float) -> void:
-	color_rect.color = GameState.players[id].color
-	label.text = str(GameState.players[id].coins)
+	coins.text = str(GameState.players[id].coins)
+	balloons.text = str(GameState.players[id].balloons)
+	balloons_unsecured.text = str(GameState.players[id].unsecured_balloons)
+	unsecured_container.visible = GameState.players[id].unsecured_balloons > 0
+	unsecured_container.visible = GameState.players[id].unsecured_balloons > 0
+	
+	outline.visible = GameState.current_id == id
+	
+	if GameState.current_id == id:
+		add_theme_constant_override("margin_left", 12)
+		add_theme_constant_override("margin_right", 12)
+	else:
+		add_theme_constant_override("margin_left", 0)
+		add_theme_constant_override("margin_right", 0)

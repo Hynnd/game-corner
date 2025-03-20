@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://ck2rxygeaag3d"]
+
+[ext_resource type="Script" uid="uid://pmionpnmiekk" path="res://src/grouped_particles_player.gd" id="1_625tq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yu0kw"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_yu0kw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_atxvw"]
+curve = SubResource("Curve_yu0kw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_me6cm"]
+spread = 28.425
+initial_velocity_min = 2.6
+initial_velocity_max = 8.1
+scale_min = 0.3
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_atxvw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ewkn"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atxvw"]
+shading_mode = 0
+albedo_color = Color(0, 1, 0.05, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me6cm"]
+shading_mode = 0
+albedo_color = Color(1, 0.958, 0.16, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt4ii"]
+shading_mode = 0
+albedo_color = Color(0.16, 0.566, 1, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_625tq")
+lifetime = 2.0
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 16
+material_override = SubResource("StandardMaterial3D_yu0kw")
+cast_shadow = 0
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_me6cm")
+draw_pass_1 = SubResource("QuadMesh_0ewkn")
+
+[node name="Particles2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 16
+material_override = SubResource("StandardMaterial3D_atxvw")
+cast_shadow = 0
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_me6cm")
+draw_pass_1 = SubResource("QuadMesh_0ewkn")
+
+[node name="Particles3" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 16
+material_override = SubResource("StandardMaterial3D_me6cm")
+cast_shadow = 0
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_me6cm")
+draw_pass_1 = SubResource("QuadMesh_0ewkn")
+
+[node name="Particles4" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+layers = 16
+material_override = SubResource("StandardMaterial3D_gt4ii")
+cast_shadow = 0
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_me6cm")
+draw_pass_1 = SubResource("QuadMesh_0ewkn")

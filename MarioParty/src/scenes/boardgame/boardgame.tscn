@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://362q31w17m0x"]
+
+[ext_resource type="Script" uid="uid://dl4s60esd3qei" path="res://src/scenes/boardgame/boardgame.gd" id="1_xnxhk"]
+[ext_resource type="PackedScene" uid="uid://dp81drxhi1mpu" path="res://menus/board_ui.tscn" id="2_uohey"]
+
+[node name="Boardgame" type="Node"]
+script = ExtResource("1_xnxhk")
+
+[node name="BoardUI" parent="." instance=ExtResource("2_uohey")]
+unique_name_in_owner = true

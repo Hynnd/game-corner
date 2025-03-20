@@ -1,142 +1,346 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4mdiyubqcb4n"]
+[gd_scene load_steps=13 format=3 uid="uid://c7avb62qu3teo"]
 
-[ext_resource type="Script" uid="uid://u8om2hftbm76" path="res://scenes/minigames/minigame.gd" id="1_6atcb"]
-[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/board_games/board_env.tres" id="2_77fas"]
-[ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/_placeholder_mat.tres" id="3_gn6q1"]
+[ext_resource type="PackedScene" uid="uid://buelxqpo2dd4o" path="res://src/scenes/minigame/minigame.tscn" id="1_em6lj"]
+[ext_resource type="Environment" uid="uid://dmjfuwhjaia60" path="res://scenes/boardgames/board_env.tres" id="2_77fas"]
+[ext_resource type="Material" uid="uid://dkjpss0remm7w" path="res://src/materials/_placeholder_mat_1.tres" id="3_gn6q1"]
 [ext_resource type="Script" uid="uid://c38od3vjndcjr" path="res://src/player_spawner/player_spawner.gd" id="5_x2u4r"]
-[ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/tools/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
+[ext_resource type="PackedScene" uid="uid://cgvuxqsfr4370" path="res://assets/weapons/automatic_rifle/automatic_rifle.tscn" id="6_vgsuu"]
 [ext_resource type="PackedScene" uid="uid://chklpwtj17qn7" path="res://src/player_spawner/spawnpoint.tscn" id="7_fnrs8"]
 [ext_resource type="PackedScene" uid="uid://djgepgd2nil5v" path="res://src/round_timer/round_timer.tscn" id="8_06vtn"]
 [ext_resource type="PackedScene" uid="uid://c6sccviksfv3a" path="res://assets/player/camera_controllers/player_camera.tscn" id="9_6atcb"]
 [ext_resource type="PackedScene" uid="uid://cvkl6xaefrf4c" path="res://src/player_status/player_status_minigame.tscn" id="9_jntm7"]
+[ext_resource type="Material" uid="uid://cufhrk45d38op" path="res://src/materials/_placeholder_mat_2.tres" id="10_em6lj"]
+[ext_resource type="Material" uid="uid://df5q3uk8gn272" path="res://src/csg_stairs_3d/invisible_material.tres" id="10_gn6q1"]
+[ext_resource type="Script" uid="uid://bd2hs0ss6o45x" path="res://src/csg_stairs_3d/csg_stairs_3d.gd" id="11_em6lj"]
 
-[node name="MinigameShooter" type="Node"]
-script = ExtResource("1_6atcb")
+[node name="Minigame" instance=ExtResource("1_em6lj")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="KeysInfo" parent="." index="0"]
+keys = Array[String](["Move: WASD", "Shoot: M1"])
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 environment = ExtResource("2_77fas")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="PlayerCamera" parent="." index="3" instance=ExtResource("9_6atcb")]
+first_person = true
+distance = 0.0
+
+[node name="PlayerSpawner" type="Node" parent="." index="4"]
+script = ExtResource("5_x2u4r")
+pick_random = true
+item = ExtResource("6_vgsuu")
+can_sprint = true
+move_speed = 4.317
+jump_force = 9.265
+gravity = 32.0
+
+[node name="Spawnpoint" parent="PlayerSpawner" index="0" instance=ExtResource("7_fnrs8")]
+
+[node name="Spawnpoint2" parent="PlayerSpawner" index="1" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="Spawnpoint3" parent="PlayerSpawner" index="2" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Spawnpoint4" parent="PlayerSpawner" index="3" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+
+[node name="Spawnpoint5" parent="PlayerSpawner" index="4" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+
+[node name="Spawnpoint6" parent="PlayerSpawner" index="5" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="Spawnpoint7" parent="PlayerSpawner" index="6" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="Spawnpoint8" parent="PlayerSpawner" index="7" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Spawnpoint9" parent="PlayerSpawner" index="8" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Spawnpoint10" parent="PlayerSpawner" index="9" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+
+[node name="Spawnpoint11" parent="PlayerSpawner" index="10" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="Spawnpoint12" parent="PlayerSpawner" index="11" instance=ExtResource("7_fnrs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
+
+[node name="RoundTimer" parent="." index="5" instance=ExtResource("8_06vtn")]
+round_time = 3600.0
+
+[node name="PlayerMinigameStatus" parent="." index="6" instance=ExtResource("9_jntm7")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(100, 1, 100)
 material = ExtResource("3_gn6q1")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D27" type="CSGBox3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 8.5, 0)
+use_collision = true
+size = Vector3(1, 17, 100)
+material = ExtResource("3_gn6q1")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="." index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.5, 50.5)
+use_collision = true
+size = Vector3(1, 17, 100)
+material = ExtResource("3_gn6q1")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="." index="10"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 50.5, 8.5, 0)
+use_collision = true
+size = Vector3(1, 17, 100)
+material = ExtResource("3_gn6q1")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="." index="11"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 8.5, -50.5)
+use_collision = true
+size = Vector3(1, 17, 100)
+material = ExtResource("3_gn6q1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -5)
 use_collision = true
 size = Vector3(6, 2, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+[node name="CSGBox3D9" type="CSGBox3D" parent="." index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -11)
 use_collision = true
 size = Vector3(6, 4, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="."]
+[node name="CSGBox3D12" type="CSGBox3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -19.5)
 use_collision = true
 size = Vector3(6, 2, 11)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+[node name="CSGBox3D14" type="CSGBox3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 7, -19.5)
+use_collision = true
+size = Vector3(6, 2, 11)
+material = ExtResource("10_em6lj")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -28)
+use_collision = true
+size = Vector3(6, 4, 6)
+material = ExtResource("10_em6lj")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4, -28)
+use_collision = true
+size = Vector3(6, 8, 6)
+material = ExtResource("10_em6lj")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 4, -20)
+use_collision = true
+size = Vector3(3, 8, 4)
+material = ExtResource("10_em6lj")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.5, -11)
 use_collision = true
 size = Vector3(6, 5, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="."]
-transform = Transform3D(0.994117, -0.108312, 0, 0.108312, 0.994117, 0, 0, 0, 1, 8.5, 0.359399, -26)
+[node name="CSGBox3D16" type="CSGBox3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 3.5, -11)
 use_collision = true
-size = Vector3(66.1104, 5, 6)
-material = ExtResource("3_gn6q1")
+size = Vector3(6, 7, 6)
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D11" type="CSGBox3D" parent="." index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 3, -11)
+use_collision = true
+size = Vector3(3, 6, 6)
+material = ExtResource("10_em6lj")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.5, 1)
 use_collision = true
 size = Vector3(5, 1, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="CSGBox3D5" type="CSGBox3D" parent="." index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.5, 1)
 use_collision = true
 size = Vector3(1, 1, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+[node name="CSGBox3D6" type="CSGBox3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5248, 1, 3.5)
 use_collision = true
 size = Vector3(1, 2, 1)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+[node name="CSGBox3D7" type="CSGBox3D" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5248, 1.5, 3.5)
 use_collision = true
 size = Vector3(1, 3, 1)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+[node name="CSGBox3D8" type="CSGBox3D" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5248, 1.5, 3.5)
 use_collision = true
 size = Vector3(1, 3, 1)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, -5)
 use_collision = true
 size = Vector3(6, 3, 6)
-material = ExtResource("3_gn6q1")
+material = ExtResource("10_em6lj")
 
-[node name="PlayerSpawner" type="Node" parent="."]
-script = ExtResource("5_x2u4r")
-pick_random = true
-item = ExtResource("6_vgsuu")
+[node name="CSGBox3D32" type="CSGBox3D" parent="." index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 14)
+use_collision = true
+size = Vector3(6, 4, 6)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
+[node name="CSGBox3D33" type="CSGBox3D" parent="." index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 27)
+use_collision = true
+size = Vector3(6, 8, 6)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint2" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+[node name="CSGBox3D18" type="CSGBox3D" parent="." index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 2, -19)
+use_collision = true
+size = Vector3(13, 4, 18)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint3" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+[node name="CSGBox3D21" type="CSGBox3D" parent="." index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 4, -4)
+use_collision = true
+size = Vector3(5, 2, 12)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint4" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+[node name="CSGBox3D23" type="CSGBox3D" parent="." index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 4, 12)
+use_collision = true
+size = Vector3(5, 2, 12)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint5" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+[node name="CSGBox3D22" type="CSGBox3D" parent="." index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 2.5, 4)
+use_collision = true
+size = Vector3(5, 5, 4)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint6" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+[node name="CSGBox3D24" type="CSGBox3D" parent="." index="34"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 4, -19.5)
+use_collision = true
+size = Vector3(5, 2, 12)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint7" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+[node name="CSGBox3D25" type="CSGBox3D" parent="." index="35"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 4, -19.5)
+use_collision = true
+size = Vector3(5, 2, 12)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint8" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+[node name="CSGBox3D26" type="CSGBox3D" parent="." index="36"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 2.5, -19.5)
+use_collision = true
+size = Vector3(5, 5, 4)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint9" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+[node name="CSGBox3D19" type="CSGBox3D" parent="." index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 2, 27)
+use_collision = true
+size = Vector3(13, 4, 18)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint10" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 8)
+[node name="CSGBox3D20" type="CSGBox3D" parent="." index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 2, 27)
+use_collision = true
+size = Vector3(18, 4, 18)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint11" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+[node name="CSGBox3D31" type="CSGBox3D" parent="." index="39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4, 29)
+use_collision = true
+size = Vector3(24, 8, 22)
+material = ExtResource("10_em6lj")
 
-[node name="Spawnpoint12" parent="PlayerSpawner" instance=ExtResource("7_fnrs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
+[node name="CSGBox3D34" type="CSGBox3D" parent="." index="40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 12, 29)
+use_collision = true
+size = Vector3(13, 8, 12)
+material = ExtResource("10_em6lj")
 
-[node name="RoundTimer" parent="." instance=ExtResource("8_06vtn")]
-round_time = 3600.0
+[node name="CSGStairs3D" type="CSGBox3D" parent="." index="41"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 2, -11)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 9)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
 
-[node name="PlayerMinigameStatus" parent="." instance=ExtResource("9_jntm7")]
+[node name="CSGStairs3D6" type="CSGBox3D" parent="." index="42"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 2, 14)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 9)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
 
-[node name="PlayerCamera" parent="." instance=ExtResource("9_6atcb")]
-first_person = true
-distance = 0.0
+[node name="CSGStairs3D7" type="CSGBox3D" parent="." index="43"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 6, 20.5)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 7)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
+
+[node name="CSGStairs3D4" type="CSGBox3D" parent="." index="44"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -34, 2, -5)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 10)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
+
+[node name="CSGStairs3D5" type="CSGBox3D" parent="." index="45"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28, 6, 33)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 8)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
+
+[node name="CSGStairs3D2" type="CSGBox3D" parent="." index="46"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 2, -28)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 9)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"
+
+[node name="CSGStairs3D3" type="CSGBox3D" parent="." index="47"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5, 6, -28)
+material_override = ExtResource("10_gn6q1")
+size = Vector3(6, 4, 9)
+material = ExtResource("10_em6lj")
+script = ExtResource("11_em6lj")
+steps = 0
+metadata/_custom_type_script = "uid://bd2hs0ss6o45x"

@@ -2,14 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cxkeqpnadmvcq" path="res://src/player_status/player_status_minigame.gd" id="1_s6o64"]
 
-[node name="PlayerStatusMinigame" type="Node"]
+[node name="PlayerStatusMinigame" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 script = ExtResource("1_s6o64")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -119.0
-offset_right = 683.0
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 mouse_filter = 2

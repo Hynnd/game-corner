@@ -1,36 +1,132 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5x28c55l7j5b"]
+[gd_scene load_steps=7 format=3 uid="uid://b5x28c55l7j5b"]
 
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_b28pn"]
 [ext_resource type="Script" uid="uid://osntvufxob2e" path="res://src/player_status/player_status_board_card/player_status_board_card.gd" id="2_b28pn"]
+[ext_resource type="PackedScene" uid="uid://drf2wem3khh0c" path="res://src/player_icon/player_icon.tscn" id="3_nrmkp"]
+[ext_resource type="PackedScene" uid="uid://dy0mlhprt32ew" path="res://assets/golden_balloon/golden_balloon_icon.tscn" id="3_yb1hl"]
+[ext_resource type="Texture2D" uid="uid://bpkahh01e8ltg" path="res://assets/golden_balloon/coin_icon.png" id="5_al7b6"]
 
-[node name="PlayerStatusBoardCard" type="PanelContainer"]
-custom_minimum_size = Vector2(55, 80)
-offset_right = 65.0
-offset_bottom = 92.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al7b6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="PlayerStatusBoardCard" type="MarginContainer"]
+offset_right = 96.0
+offset_bottom = 108.0
 size_flags_vertical = 8
 theme = ExtResource("1_b28pn")
 script = ExtResource("2_b28pn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="You" type="Label" parent="VBoxContainer"]
+[node name="UnsecuredContainer" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="GoldenBalloonIcon" parent="VBoxContainer/UnsecuredContainer" instance=ExtResource("3_yb1hl")]
+layout_mode = 2
+
+[node name="BalloonsUnsecured" type="Label" parent="VBoxContainer/UnsecuredContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Outline" type="Panel" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_al7b6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PlayerIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_nrmkp")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("5_al7b6")
+
+[node name="Coins" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 5
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="You" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "(You)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="GoldenBalloonIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" instance=ExtResource("3_yb1hl")]
+layout_mode = 2
+
+[node name="Balloons" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1

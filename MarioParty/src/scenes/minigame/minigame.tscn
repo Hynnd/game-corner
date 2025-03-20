@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://buelxqpo2dd4o"]
+
+[ext_resource type="Script" uid="uid://u8om2hftbm76" path="res://src/scenes/minigame/minigame.gd" id="1_5w1un"]
+[ext_resource type="PackedScene" uid="uid://t7guhm6uc06c" path="res://_unsorted/keys_info/keys_info.tscn" id="2_xgio1"]
+
+[node name="Minigame" type="Node"]
+script = ExtResource("1_5w1un")
+
+[node name="KeysInfo" parent="." instance=ExtResource("2_xgio1")]

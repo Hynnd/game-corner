@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy0mlhprt32ew"]
+
+[ext_resource type="Texture2D" uid="uid://d2kbggk68xoki" path="res://assets/golden_balloon/balloon_icon_small.png" id="1_c6f6x"]
+
+[node name="GoldenBalloonIcon" type="Control"]
+custom_minimum_size = Vector2(17, 21)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 17.0
+offset_bottom = 21.0
+
+[node name="Outline3" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(2.24, 3.014)
+scale = Vector2(0.387159, 0.387159)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(40.681, 27.085, 32.9323, 39.9996, 25.1835, 45.1655, 30.3494, 55.4971, 1.93726, 55.4971, 7.10303, 45.1655, -0.64563, 39.9996, -8.39441, 27.085, -10.9774, 11.5875, -5.81152, -3.90997, 9.68604, -11.6588, 22.6006, -11.6588, 38.0981, -3.90997, 43.2639, 11.5875)
+uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+visible = false
+modulate = Color(1, 0.753, 0.22, 1)
+position = Vector2(2.24, 3.014)
+scale = Vector2(0.387159, 0.387159)
+polygon = PackedVector2Array(35.5151, 24.5021, 27.7665, 37.4167, 20.0177, 42.5825, 17.4347, 42.5825, 20.0177, 47.7484, 12.2689, 47.7484, 14.8518, 42.5825, 12.2689, 42.5825, 4.52014, 37.4167, -3.22864, 24.5021, -5.81152, 11.5875, -0.64563, -1.32709, 9.68604, -6.49292, 22.6006, -6.49292, 32.9323, -1.32709, 38.0981, 11.5875)
+uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Polygon2D3"]
+color = Color(0.699219, 0.699219, 0.699219, 1)
+polygon = PackedVector2Array(27.7665, 37.4167, 20.0177, 42.5825, 17.4347, 42.5825, 22.6006, 50.3313, 9.68604, 50.3313, 14.8518, 42.5825, 12.2689, 42.5825, 4.52014, 37.4167, -3.22864, 24.5021, -5.81152, 11.5875, -0.64563, 24.5021, 4.52014, 32.2509, 14.8518, 37.4167, 27.7665, 34.8338, 35.5151, 24.5021)
+uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 0.752941, 0.219608, 1)
+layout_mode = 1
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 19.0
+offset_bottom = 23.0
+texture = ExtResource("1_c6f6x")

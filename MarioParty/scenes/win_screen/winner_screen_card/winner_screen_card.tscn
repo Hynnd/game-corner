@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5r0p8snfpjl5"]
+
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_db545"]
+[ext_resource type="Script" uid="uid://djof12eiya5b7" path="res://scenes/win_screen/winner_screen_card/winner_screen_card.gd" id="2_fjbyn"]
+[ext_resource type="PackedScene" uid="uid://drf2wem3khh0c" path="res://src/player_icon/player_icon.tscn" id="3_bpucv"]
+[ext_resource type="Texture2D" uid="uid://bpkahh01e8ltg" path="res://assets/golden_balloon/coin_icon.png" id="4_1hmwk"]
+
+[node name="WinnerScreenCard" type="PanelContainer"]
+custom_minimum_size = Vector2(131, 0)
+size_flags_vertical = 8
+theme = ExtResource("1_db545")
+script = ExtResource("2_fjbyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="You" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(You)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerIcon" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_bpucv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("4_1hmwk")
+
+[node name="Coins" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("4_1hmwk")
+
+[node name="CoinsTotal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -12,11 +12,11 @@ func create_server():
 	multiplayer.multiplayer_peer = peer
 	
 	GameState.add_player(peer.get_unique_id())
-	multiplayer.peer_connected.connect(func(_id: int):
-		GameState.add_player.rpc(_id)
+	multiplayer.peer_connected.connect(func(peer_id: int):
+		GameState.add_player.rpc(peer_id)
 		
 		var state = GameState.get_state()
-		GameState.set_state.rpc_id(_id, state)
+		GameState.set_state.rpc_id(peer_id, state)
 		)
 	
 	id = 1
@@ -29,3 +29,11 @@ func join_server():
 	multiplayer.multiplayer_peer = peer
 	
 	id = multiplayer.get_unique_id()
+
+
+func sync_game_state_to_peers():
+	if id != 1: return
+	
+	for peer_id in multiplayer.get_peers():
+		var state = GameState.get_state()
+		GameState.set_state.rpc_id(peer_id, state)

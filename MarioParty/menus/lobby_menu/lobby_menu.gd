@@ -32,6 +32,7 @@ func _ready() -> void:
 		color_container.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
 	draw_canvas.stopped_drawing.connect(func():
+		print(Multiplayer.id)
 		apply_face.rpc(Multiplayer.id, draw_canvas.image.save_png_to_buffer())
 		)
 
@@ -59,7 +60,7 @@ func start_game(sorted_ids:Array) -> void:
 		var id = sorted_ids[i]
 		GameState.players[id].index = i
 	
-	get_tree().change_scene_to_file("res://scenes/board_games/board_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/boardgames/boardgame_1.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")

@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgvuxqsfr4370"]
+
+[ext_resource type="Script" uid="uid://b4ku6yy61nqix" path="res://assets/weapons/automatic_rifle/automatic_rifle.gd" id="1_emv83"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdja7"]
+albedo_color = Color(0.078125, 0.078125, 0.078125, 1)
+
+[sub_resource type="Gradient" id="Gradient_emv83"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.766382, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q0rrj"]
+gradient = SubResource("Gradient_emv83")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.7)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_wxo0j"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.641026, 0.732194)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e2eqs"]
+gradient = SubResource("Gradient_wxo0j")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.7)
+metadata/_snap_enabled = true
+
+[node name="AutomaticRifle" type="Node3D"]
+top_level = true
+script = ExtResource("1_emv83")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.11
+one_shot = true
+
+[node name="Orbit" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Visuals" type="Node3D" parent="Orbit"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227099, -0.324342, -0.0148478)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Orbit/Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.478149)
+material_override = SubResource("StandardMaterial3D_tdja7")
+size = Vector3(0.176758, 0.304443, 1.1358)
+
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_q0rrj")
+
+[node name="HitMarker" type="TextureRect" parent="UI"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_e2eqs")

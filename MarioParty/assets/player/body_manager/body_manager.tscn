@@ -13,7 +13,7 @@ cull_mode = 2
 albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_t6uc2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sv3f5"]
 _surfaces = [{
 "aabb": AABB(-0.994712, -0.00241214, -1, 1.98942, 2.67517, 2),
 "format": 34359742465,
@@ -45,7 +45,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("DiM2P6lBAUBjojc/AAAAAAAVHrsAAACADiM2v6lBAUBjojc/0LEtvybX7T4AAACA8n9CP7h/GEAAAACAAAAAAKpw5D7Pijq/AAAAAKpw5D7Pijo/AAAAAEpt7D8AAIA/DiM2v1ptfz9jojc/8n9Cv7h/GEAAAACAdqV+v0pt7D8AAACAdqV+P0pt7D8AAACADiM2P6lBAUBjoje/AAAAALh/GECZCE+/DiM2P1ptfz9joje/AAAAAEpt7D8AAIC/DiM2v1ptfz9joje/DiM2v6lBAUBjoje/8n9CP7h/GEAAAACA8n9Cv7h/GEAAAACAAAAAALh/GECZCE+/DiM2P1ptfz9jojc/AAAAALh/GECZCE8/dqV+P/0Dmz8AAACAAAAAAP0Dmz8AAIC/0LEtPybX7T4AAACAdqV+v/0Dmz8AAACAAAAAAP0Dmz8AAIA/AAAAALh/GECZCE8/AAAAAHkOK0AAAACANrOImgn3WWH/fwAA////v8hMiJr1CKWenD1iQi1iD9AOve/CFp5Fsg3CAAAnK9y0/38OQrnpa6r/fwuQiRS8y+RKBGn///8/8ELvwuhhuU3VEtSSsHlJUint1JJOhrWtdeXIzEu9hLuwvv//lStTNQTpGjX///+/8u///3sXujX6Fho1SlLg34kayMyzQnpEDr3vwkqnE67wQu/CtFjrUbC+//+eNd4yGrUEaTvAJOn/f07BWBXJ1TjuOW7mjP8Xi/AAAE5E1uZiwmJC3d8W8cYROW4Yc//n/3+McK5N2B3/f07BQhrO2v9////SOP8/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_t6uc2")
+shadow_mesh = SubResource("ArrayMesh_sv3f5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i43vc"]
 resource_name = "Material"
@@ -53,7 +53,7 @@ cull_mode = 2
 albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_sv3f5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nr3sf"]
 _surfaces = [{
 "aabb": AABB(-0.248635, -0.285771, -0.324036, 0.49727, 0.283359, 0.52676),
 "format": 34359742465,
@@ -85,7 +85,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("Mpp+Po5Qkr4AAACAMpp+vo5Qkr4AAACAAAAAAAAVHrsAAACAAAAAAFoWir4B6KW+5XY4PYntgb4Gl08+ozxsu4B2Bb1i+Sy7t8ctS////z9FOqdN////P899hvT///8/5ygYA////7/HgzVO////P+uLWgP///+/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_sv3f5")
+shadow_mesh = SubResource("ArrayMesh_nr3sf")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wieca"]
 _surfaces = [{
@@ -218,8 +218,8 @@ skeleton = NodePath("")
 
 [node name="Decal" type="Decal" parent="Chest/Head/Head"]
 unique_name_in_owner = true
-transform = Transform3D(-0.851743, -3.25483e-15, 7.44617e-08, -7.44617e-08, 3.72309e-08, -0.851743, 0, -0.851743, -3.72309e-08, 1.71312e-15, 1.40491, -0.557914)
-size = Vector3(2, 1.42183, 2)
+transform = Transform3D(-0.945056, -3.61142e-15, 8.26194e-08, -8.26194e-08, 4.13098e-08, -0.945056, 0, -0.945056, -4.13098e-08, 9.03903e-16, 1.405, -0.656461)
+size = Vector3(2, 1.13516, 2)
 texture_albedo = ExtResource("4_sv3f5")
 upper_fade = 1e-05
 lower_fade = 2.3338e-05

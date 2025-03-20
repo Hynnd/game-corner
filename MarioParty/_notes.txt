@@ -2,3 +2,4 @@
 - add body pushing
 - board game rules and map
 - quake minigame
+- stairs
