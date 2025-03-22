@@ -6,12 +6,6 @@ var icons := {}
 func _process(delta: float) -> void:
 	for id in GameState.players.keys():
 		if not icons.has(id):
-			#var rect = ColorRect.new()
-			#rect.custom_minimum_size = Vector2i(32,32)
-			#rect.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-			#$HBoxContainer.add_child(rect)
-			#icons[id] = icon
-			
 			var icon = preload("res://src/player_icon/player_icon.tscn").instantiate()
 			icon.id = id
 			icon.auto_update = true

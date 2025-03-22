@@ -10,6 +10,7 @@ const PLAYER_STATE:Dictionary = {
 	"color": Color.WHITE,
 	"face": null,
 	"coins": 0,
+	"tile": "",
 	"minigame_coins": 0,
 	"balloons": 0,
 	"unsecured_balloons": 0,
@@ -26,13 +27,15 @@ const MINIGAME_POOL = [
 ]
 
 var players:Dictionary[int, Dictionary] = {} # ID, Dict
-var current_id:int = -1 # ID
 
-var player_tiles:Dictionary[int, String] = {} # ID, Tile name
 var player_nodes:Dictionary[int, Node3D] = {} # ID, Node3D
+var current_id:int = -1 # ID
 var start_tile:Node3D
 var player_spawner:Node
 var camera_controller:Node3D
+var max_rounds:int = 15
+var current_round:int = 0
+var board_path:String = ""
 
 
 func find_tile(tile_name:String) -> Node3D:
@@ -49,18 +52,27 @@ func to_winner_screen() -> void:
 
 
 @rpc("any_peer", "call_local", "reliable")
-func return_to_board() -> void:
-	for id in players.keys():
-		players[id].coins += players[id].minigame_coins
-		players[id].minigame_coins = 0
-	get_tree().change_scene_to_file("res://scenes/boardgames/boardgame_1.tscn")
-
-
-@rpc("any_peer", "call_local", "reliable")
 func play_minigame() -> void:
 	var file_name = MINIGAME_POOL.pick_random()
 	var path = "res://scenes/minigames/" + file_name + ".tscn"
 	get_tree().change_scene_to_file(path)
+
+
+@rpc("any_peer", "call_local", "reliable")
+func return_to_board() -> void:
+	for id in players.keys():
+		players[id].coins += players[id].minigame_coins
+		players[id].minigame_coins = 0
+	current_round += 1
+	get_tree().change_scene_to_file(board_path)
+
+
+@rpc("any_peer", "call_local", "reliable")
+func begin_game() -> void:
+	current_round = 1
+	board_path = "res://scenes/boardgames/boardgame_1.tscn"
+	get_tree().change_scene_to_file(board_path)
+
 
 
 @rpc("any_peer", "call_local", "reliable")

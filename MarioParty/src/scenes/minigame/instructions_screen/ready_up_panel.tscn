@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkjreuvx74imr"]
+
+[ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="1_5twgy"]
+[ext_resource type="Script" uid="uid://bxb6hr7fc7op5" path="res://src/scenes/minigame/instructions_screen/ready_up_panel.gd" id="1_yuhuu"]
+
+[node name="ReadyUpPanel" type="VBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_5twgy")
+theme_override_constants/separation = 24
+alignment = 1
+script = ExtResource("1_yuhuu")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Icons" type="HBoxContainer" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NumPlayers" type="Label" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "?/?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Ready" type="Button" parent="HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Ready"
+
+[node name="ForceStart" type="Button" parent="HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Start *"

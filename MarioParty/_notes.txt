@@ -3,3 +3,4 @@
 - board game rules and map
 - quake minigame
 - stairs
+- ui drawn animation effect

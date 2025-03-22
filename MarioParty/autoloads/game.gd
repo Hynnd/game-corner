@@ -1,13 +1,14 @@
 extends Node
 
-var COLOR_NAMES:Dictionary[String,String] = {
-	"3c7dff": "Blue",
-	"ff4e47": "Red",
-	"3bff41": "Green",
-	"ffe83d": "Yellow",
-	"b53dff": "Magenta",
-	"3dffe5": "Mint",
-}
+#var COLOR_NAMES:Dictionary[String,String] = {
+	#"3c7dff": "Blue",
+	#"ff4e47": "Red",
+	#"3bff41": "Green",
+	#"ffe83d": "Yellow",
+	#"b53dff": "Magenta",
+	#"3dffe5": "Mint",
+	#"ff8000": "Orange",
+#}
 
 
 func _input(_event: InputEvent):

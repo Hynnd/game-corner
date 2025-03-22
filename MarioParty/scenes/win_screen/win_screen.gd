@@ -10,7 +10,7 @@ func _ready() -> void:
 			)
 	
 	for id in GameState.players.keys():
-		var new_status = preload("winner_screen_card/winner_screen_card.tscn").instantiate()
+		var new_status = preload("player_status_winner_card/player_status_winner_card.tscn").instantiate()
 		new_status.id = id
 		container.add_child(new_status)
 	
@@ -23,6 +23,11 @@ func _ready() -> void:
 	
 	for id in get_winners():
 		GameState.players[id].unsecured_balloons += 1
+	
+	for i:int in container.get_child_count():
+		var node = container.get_child(i)
+		node.modulate.a = 0
+		create_tween().tween_property(node, "modulate:a", 1, 0.).set_delay(2.9 + i * 0.15)
 
 
 func get_winners() -> Array[int]:

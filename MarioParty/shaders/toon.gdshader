@@ -17,7 +17,8 @@ void fragment() {
 
 
 void vertex() {
-	float speed = 7.;
+	//float speed = 7.;
+	float speed = 4.;
 	if (int(floor(TIME*speed)) % 2 == 0) {
 		VERTEX.x += sin(VERTEX.y*4.)*0.1 * wobble_amp;
 	}

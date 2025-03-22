@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbmyp0rxuywjl"]
 
-[ext_resource type="Script" uid="uid://d13cqmjejrp0e" path="res://assets/board_tile/board_tile_deposit.gd" id="1_srstv"]
+[ext_resource type="Script" uid="uid://d13cqmjejrp0e" path="res://assets/board_tile/res/board_tile_deposit.gd" id="1_srstv"]
 [ext_resource type="Theme" uid="uid://be4hentnuh5p1" path="res://themes/default_theme.tres" id="2_2jxyl"]
 [ext_resource type="Shader" uid="uid://c7eh3jnoq2wfx" path="res://shaders/toon.gdshader" id="2_5d1b8"]
 [ext_resource type="Texture2D" uid="uid://c5bkpcvka5k8v" path="res://assets/golden_balloon/balloon_icon_large.png" id="4_1jh0y"]
@@ -32,6 +32,7 @@ corner_radius_bottom_left = 8
 script = ExtResource("1_srstv")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+visible = false
 radius = 0.85
 height = 0.25
 sides = 16

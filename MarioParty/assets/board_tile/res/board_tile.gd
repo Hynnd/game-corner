@@ -25,22 +25,12 @@ func _create_lines() -> void:
 	create_line(next_tile.global_position)
 
 
-func get_pos() -> Vector2:
-	var offsets = [Vector2(0,-1),Vector2(0,1),Vector2(1,0),Vector2(-1,0),Vector2(-5,0)]
-	var players_on_tile = 0
-	for id in GameState.player_tiles.keys():
-		var tile_name = GameState.player_tiles[id]
-		if tile_name == name and global_position.distance_to(GameState.player_nodes[id].global_position) < 2:
-			players_on_tile += 1
-	
-	return Swizzler.xz(global_position) + offsets[players_on_tile]
-
-
 func on_player_passed(id:int):
 	var player = GameState.player_nodes[id]
-	player.walk_to_point(next_tile.get_pos())
-	player.current_tile_name = next_tile.name
 	player.movement_board.current_moves -= 1
+	if player.movement_board.current_moves > 0:
+		player.walk_to_point(next_tile.get_pos())
+		player.current_tile_name = next_tile.name
 
 
 func on_player_stopped(id:int):

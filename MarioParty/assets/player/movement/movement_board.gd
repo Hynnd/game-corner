@@ -32,7 +32,8 @@ func _physics_process(delta: float) -> void:
 	
 	_tile_moving()
 	
-	moves_num.text = str(current_moves+1)
+	#moves_num.text = str(current_moves+1)
+	moves_num.text = str(current_moves)
 	moves_num.visible = display_num and (current_moves > 0 or moving)
 
 
@@ -45,7 +46,7 @@ func _tile_moving():
 			tile.on_player_passed(owner.id)
 	
 	# Finish moving
-	if moving and current_moves == 0 and not target_point.is_finite():
+	elif moving and current_moves == 0 and not target_point.is_finite():
 		moving = false
 		owner.face_camera()
 		

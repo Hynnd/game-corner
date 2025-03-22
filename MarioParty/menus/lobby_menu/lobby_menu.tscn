@@ -101,10 +101,11 @@ visible = false
 [node name="Stomach" parent="MarginContainer/HBoxContainer/VBoxContainer2/Container/SubViewportContainer/SubViewport/BodyManager" index="3"]
 visible = false
 
-[node name="ColorContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ColorContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 4
+columns = 5
 
 [node name="CharacterColorButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
@@ -129,6 +130,21 @@ color = Color(0.708667, 0.24, 1, 1)
 [node name="CharacterColorButton6" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
 layout_mode = 2
 color = Color(0.24, 1, 0.898667, 1)
+
+[node name="CharacterColorButton7" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
+layout_mode = 2
+color = Color(1, 0.503757, 0, 1)
+
+[node name="CharacterColorButton8" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
+layout_mode = 2
+color = Color(0.969667, 0.74, 1, 1)
+
+[node name="CharacterColorButton9" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
+layout_mode = 2
+color = Color(0.369, 0.3987, 0.45, 1)
+
+[node name="CharacterColorButton10" parent="MarginContainer/HBoxContainer/VBoxContainer2/ColorContainer" instance=ExtResource("2_urr6r")]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

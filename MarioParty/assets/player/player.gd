@@ -4,11 +4,9 @@ var id:int = 0
 
 var current_tile_name:String:
 	get:
-		if GameState.player_tiles.has(id):
-			return GameState.player_tiles[id]
-		return ""
+		return GameState.players[id].tile
 	set(value):
-		GameState.player_tiles[id] = value
+		GameState.players[id].tile = value
 
 @export var can_jump:bool = true
 @export var can_move:bool = true

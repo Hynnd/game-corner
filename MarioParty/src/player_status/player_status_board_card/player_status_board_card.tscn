@@ -36,6 +36,7 @@ theme_override_constants/separation = 12
 [node name="UnsecuredContainer" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 1
 
 [node name="GoldenBalloonIcon" parent="VBoxContainer/UnsecuredContainer" instance=ExtResource("3_yb1hl")]
 layout_mode = 2
@@ -60,35 +61,60 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_al7b6")
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="PlayerIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_nrmkp")]
+[node name="PlayerIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_nrmkp")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="You" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -14.0
+offset_right = 33.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "(You)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = ExtResource("5_al7b6")
 
-[node name="Coins" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="Coins" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -98,30 +124,14 @@ text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 5
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="You" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "(You)"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="GoldenBalloonIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" instance=ExtResource("3_yb1hl")]
+[node name="GoldenBalloonIcon" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer3" instance=ExtResource("3_yb1hl")]
 layout_mode = 2
 
-[node name="Balloons" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+[node name="Balloons" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

@@ -17,8 +17,7 @@ func _ready() -> void:
 	%PlayerIcon._refresh()
 	
 	outline.modulate = GameState.players[id].color
-	#if id == Multiplayer.id:
-	panel_container.self_modulate = GameState.players[id].color
+	#panel_container.self_modulate = GameState.players[id].color
 
 
 func _process(delta: float) -> void:
@@ -31,8 +30,8 @@ func _process(delta: float) -> void:
 	outline.visible = GameState.current_id == id
 	
 	if GameState.current_id == id:
-		add_theme_constant_override("margin_left", 12)
-		add_theme_constant_override("margin_right", 12)
+		add_theme_constant_override("margin_left", 10)
+		add_theme_constant_override("margin_right", 10)
 	else:
 		add_theme_constant_override("margin_left", 0)
 		add_theme_constant_override("margin_right", 0)

@@ -10,6 +10,8 @@ func _ready() -> void:
 	
 	%PlayerIcon.id = id
 	%PlayerIcon._refresh()
+	
+	#self_modulate = GameState.players[id].color
 
 
 func _process(delta: float) -> void:

@@ -23,26 +23,7 @@ size_flags_vertical = 4
 color = Color(0.71875, 0.71875, 0.71875, 1)
 script = ExtResource("1_fmq26")
 
-[node name="Outline" type="Polygon2D" parent="."]
-visible = false
-position = Vector2(0, 6)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(37, 25, 29, 38, 20, 44, 22, 48, 10, 48, 12, 44, 3, 38, -5, 25, -6, 12, -2, -1, 10, -8, 22, -8, 34, -1, 38, 12)
-uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, 6)
-polygon = PackedVector2Array(35, 24, 28, 36, 20, 42, 17, 42, 19, 46, 13, 46, 15, 42, 12, 42, 4, 36, -3, 25, -4, 12, 0, 0, 10, -6, 22, -6, 32, 0, 36, 12)
-uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
-
-[node name="Polygon2D2" type="Polygon2D" parent="Polygon2D"]
-color = Color(0.699219, 0.699219, 0.699219, 1)
-polygon = PackedVector2Array(28, 36, 20, 42, 17, 42, 19, 46, 13, 46, 15, 42, 12, 42, 4, 36, -3, 25, -4, 12, -2, 24, 4, 33, 12, 38, 19, 39)
-uv = PackedVector2Array(31.596, 47.8952, 37.9072, 42.6721)
-
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_stre3")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Face" type="TextureRect" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(38, 38)
 layout_mode = 1
@@ -66,10 +47,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -17.0
-offset_right = 16.0
-offset_bottom = 15.0
+offset_left = -19.0
+offset_top = -22.0
+offset_right = 19.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5tcns")

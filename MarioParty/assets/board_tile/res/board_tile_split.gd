@@ -30,10 +30,6 @@ func _create_lines() -> void:
 		create_line(tile.global_position)
 
 
-func get_pos() -> Vector2:
-	return Swizzler.xz(global_position)
-
-
 func on_player_passed(id:int):
 	var player = GameState.player_nodes[id]
 	

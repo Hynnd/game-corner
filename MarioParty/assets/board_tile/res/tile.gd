@@ -21,3 +21,14 @@ func on_player_passed(id:int):
 
 func on_player_stopped(id:int):
 	pass
+
+
+func get_pos() -> Vector2:
+	var offsets = [Vector2(0,-1),Vector2(1,0),Vector2(0,1),Vector2(-1,0)]
+	var players_on_tile = 0
+	for id in GameState.players.keys():
+		var tile_name = GameState.players[id].tile
+		if tile_name == name and global_position.distance_to(GameState.player_nodes[id].global_position) < 2:
+			players_on_tile += 1
+	
+	return Swizzler.xz(global_position) + offsets[players_on_tile]

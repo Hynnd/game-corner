@@ -3,7 +3,7 @@ extends Control
 @onready var label: Label = %DebugLabel
 @onready var ready_button: Button = %Ready
 @onready var force_start_button: Button = %ForceStart
-@onready var color_container: HBoxContainer = %ColorContainer
+@onready var color_container: Control = %ColorContainer
 @onready var balloon_rect: TextureRect = %BalloonRect
 @onready var body_manager: Node3D = %BodyManager
 @onready var draw_canvas: TextureRect = %DrawCanvas
@@ -32,7 +32,7 @@ func _ready() -> void:
 		color_container.get_child(multiplayer.get_peers().size()).on_pressed()
 		)
 	draw_canvas.stopped_drawing.connect(func():
-		print(Multiplayer.id)
+		#print(Multiplayer.id)
 		apply_face.rpc(Multiplayer.id, draw_canvas.image.save_png_to_buffer())
 		)
 
@@ -60,7 +60,8 @@ func start_game(sorted_ids:Array) -> void:
 		var id = sorted_ids[i]
 		GameState.players[id].index = i
 	
-	get_tree().change_scene_to_file("res://scenes/boardgames/boardgame_1.tscn")
+	GameState.begin_game()
+	#get_tree().change_scene_to_file("res://scenes/boardgames/boardgame_1.tscn")
 
 
 @rpc("any_peer", "call_local", "reliable")
